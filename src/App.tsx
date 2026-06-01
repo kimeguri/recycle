@@ -634,15 +634,18 @@ function Hero({
         const currentOption = languageOptions.find((language) => language.code === currentLanguage) ?? languageOptions[0];
 
   return (/*#__PURE__*/
-            _jsxs("section", { id: "top", className: "scroll-mt-40 grid gap-10 rounded-[1.8rem] border border-[#E8DDD1] bg-white p-6 shadow-sm md:grid-cols-[0.95fr_1.05fr] md:p-12", children: [/*#__PURE__*/
-                                    _jsxs("div", { className: "flex flex-col justify-center", children: [/*#__PURE__*/
-                                                          _jsxs("div", { className: "relative mb-6 w-fit", "aria-label": "Language support", children: [/*#__PURE__*/
+            _jsxs("section", { id: "top", className: "relative isolate scroll-mt-40 overflow-hidden rounded-[2rem] border border-[#D9C7B6] bg-stone-950 shadow-[0_28px_80px_rgba(78,58,40,0.22)]", children: [/*#__PURE__*/
+                                    _jsx("img", { src: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85", alt: "Warm living room with reused furniture", className: "absolute inset-0 h-full w-full object-cover object-center" }), /*#__PURE__*/
+                                    _jsx("div", { className: "absolute inset-0 bg-[#172017]/45" }), /*#__PURE__*/
+                                    _jsx("div", { className: "absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#162016]/95 via-[#273225]/72 to-transparent" }), /*#__PURE__*/
+                                    _jsxs("div", { className: "relative z-10 flex min-h-[560px] flex-col justify-between p-6 text-white sm:p-8 md:min-h-[620px] md:p-12 lg:p-14", children: [/*#__PURE__*/
+                                                          _jsxs("div", { className: "relative z-30 w-fit", "aria-label": "Language support", children: [/*#__PURE__*/
                                                                                   _jsxs("button", {
                                                                                                     type: "button",
                                                                                                     "aria-label": "Choose language",
                                                                                                     "aria-expanded": isLanguageOpen,
                                                                                                     onClick: () => setIsLanguageOpen((open) => !open),
-                                                                                                    className: "flex items-center gap-2 rounded-full border border-[#E8DDD1] bg-white px-4 py-2 text-sm font-medium text-[#C86F58] shadow-sm transition hover:-translate-y-0.5 hover:border-[#C86F58] hover:shadow-md", children: [/*#__PURE__*/
+                                                                                                    className: "flex items-center gap-2 rounded-full border border-white/30 bg-white/95 px-4 py-2 text-sm font-medium text-[#C86F58] shadow-sm transition hover:-translate-y-0.5 hover:border-white hover:shadow-md", children: [/*#__PURE__*/
 
                                                                                                     _jsx(Globe, { size: 20, strokeWidth: 1.7 }), /*#__PURE__*/
                                                                                                                       _jsx("span", { className: "text-xl", children: currentOption.flag })] }
@@ -669,21 +672,46 @@ function Hero({
                                                                                          ) :
                                                                           null] }
                                                                         ), /*#__PURE__*/
-                                                  _jsx("h1", { className: "text-4xl font-semibold leading-[1.35] tracking-[0.04em] text-stone-900 md:text-5xl", children:
-                                                                  t.heroTitle }
-                                                               ), /*#__PURE__*/
-                                                  _jsx("p", { className: "mt-4 text-xl font-medium tracking-wide text-[#C86F58]", children: t.heroLead }),
-                                                  t.heroSub ? /*#__PURE__*/_jsx("p", { className: "mt-2 text-sm leading-6 text-stone-500", children: t.heroSub }) : null, /*#__PURE__*/
-                                                  _jsxs("div", { className: "mt-8 flex flex-wrap gap-4", children: [/*#__PURE__*/
-                                                                          _jsxs("a", { href: "#new-items", className: "inline-flex items-center justify-center gap-2 rounded-full bg-[#C86F58] px-7 py-4 text-sm font-medium text-white transition hover:bg-[#B8614D]", children: [/*#__PURE__*/
-                                                                                                  _jsx(ShoppingBag, { size: 18 }), " ", t.viewItems] }
-                                                                                          ), /*#__PURE__*/
-                                                                  _jsxs("a", { href: "#how-to-use", className: "inline-flex items-center justify-center gap-2 rounded-full border border-[#C8B49B] bg-white px-7 py-4 text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3]", children: [/*#__PURE__*/
-                                                                                          _jsx(BookOpen, { size: 18 }), " ", t.howFlow] }
+                                                  _jsxs("div", { className: "max-w-2xl py-14 sm:py-20", children: [/*#__PURE__*/
+                                                                        _jsx("div", { className: "mb-5 inline-flex rounded-full border border-white/25 bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#F4D7B4] backdrop-blur", children: "KiMEGURi Reuse Market" }), /*#__PURE__*/
+                                                                        _jsx("h1", { className: "text-4xl font-semibold leading-[1.12] tracking-[0.03em] text-white md:text-6xl", children:
+                                                                                        t.heroTitle }
+                                                                                     ), /*#__PURE__*/
+                                                                        _jsx("p", { className: "mt-5 max-w-xl text-lg font-medium leading-8 text-white/90 md:text-xl", children: t.heroLead }),
+                                                                        t.heroSub ? /*#__PURE__*/_jsx("p", { className: "mt-3 max-w-lg text-sm leading-6 text-white/75", children: t.heroSub }) : null, /*#__PURE__*/
+                                                                        _jsxs("div", { className: "mt-9 flex flex-wrap gap-4", children: [/*#__PURE__*/
+                                                                                                _jsxs("a", { href: "#new-items", className: "inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-[#31583A] shadow-lg shadow-black/15 transition hover:-translate-y-0.5 hover:bg-[#F6E6D6]", children: [/*#__PURE__*/
+                                                                                                                        _jsx(ShoppingBag, { size: 18 }), " ", t.viewItems] }
+                                                                                                                ), /*#__PURE__*/
+                                                                                        _jsxs("a", { href: "#how-to-use", className: "inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/45 bg-white/10 px-7 py-4 text-sm font-medium text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20", children: [/*#__PURE__*/
+                                                                                                                _jsx(BookOpen, { size: 18 }), " ", t.howFlow] }
+                                                                                                        )] }
+                                                                                      )] }
+                                                                      ), /*#__PURE__*/
+                                                  _jsxs("div", { className: "grid gap-3 border-t border-white/20 pt-5 text-sm text-white/85 sm:grid-cols-3", children: [/*#__PURE__*/
+                                                                        _jsxs("div", { className: "flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur", children: [/*#__PURE__*/
+                                                                                              _jsx(Sofa, { size: 18, strokeWidth: 1.6, className: "text-[#F4D7B4]" }), /*#__PURE__*/
+                                                                                              _jsxs("div", { children: [/*#__PURE__*/
+                                                                                                                    _jsx("div", { className: "font-semibold text-white", children: categoryNames[currentLanguage].Furniture }), /*#__PURE__*/
+                                                                                                                    _jsx("div", { className: "text-xs text-white/65", children: "Furniture" })] }
+                                                                                                            )] }
+                                                                                  ), /*#__PURE__*/
+                                                                        _jsxs("div", { className: "flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur", children: [/*#__PURE__*/
+                                                                                              _jsx(Refrigerator, { size: 18, strokeWidth: 1.6, className: "text-[#F4D7B4]" }), /*#__PURE__*/
+                                                                                              _jsxs("div", { children: [/*#__PURE__*/
+                                                                                                                    _jsx("div", { className: "font-semibold text-white", children: categoryNames[currentLanguage].Appliances }), /*#__PURE__*/
+                                                                                                                    _jsx("div", { className: "text-xs text-white/65", children: "Appliances" })] }
+                                                                                                            )] }
+                                                                                  ), /*#__PURE__*/
+                                                                        _jsxs("div", { className: "flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur", children: [/*#__PURE__*/
+                                                                                              _jsx(Package, { size: 18, strokeWidth: 1.6, className: "text-[#F4D7B4]" }), /*#__PURE__*/
+                                                                                              _jsxs("div", { children: [/*#__PURE__*/
+                                                                                                                    _jsx("div", { className: "font-semibold text-white", children: categoryNames[currentLanguage]["Daily Goods"] }), /*#__PURE__*/
+                                                                                                                    _jsx("div", { className: "text-xs text-white/65", children: "Daily Goods" })] }
+                                                                                                            )] }
                                                                                   )] }
                                                                 )] }
-                                                ), /*#__PURE__*/
-                        _jsx("div", { className: "relative h-full min-h-[300px] overflow-hidden rounded-[1.4rem] bg-[#EEE8E0] shadow-inner", children: /*#__PURE__*/_jsx("img", { src: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80", alt: "Second-hand furniture and home goods", className: "h-full min-h-[300px] w-full object-cover" }) })] }
+                                                )] }
                       ));
 
 }
