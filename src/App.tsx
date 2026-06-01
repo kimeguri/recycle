@@ -436,8 +436,8 @@ function PhotoPlaceholder({ large = false, t }: { large?: boolean; t: Record<str
                           )}
                 >
                 <ImageIcon size={large ? 54 : 34} strokeWidth={1.4} />
-                <div className="mt-3 text-sm font-medium">{t.photoJa}</div>
-                <div className="text-xs">{t.photoEn}</div>
+                <div className="mt-3 text-sm font-medium">{t.photoJa}
+                <div className="text-xs">{t.photoEn}
           </div>
         );
 }
@@ -498,7 +498,7 @@ function Header({ t }: { t: Record<string, string> }) {
                 
                         <button className="inline-flex rounded-full border border-[#E2D5C6] bg-white p-2 text-stone-700 lg:hidden" aria-label="Open menu">
                                   <Menu size={22} />
-                        </Button>
+                        </button>
                 </div>
           </header>
         );
@@ -529,7 +529,7 @@ function Hero({
                                               >
                                               <Globe size={20} strokeWidth={1.7} />
                                               <span className="text-xl">{currentOption.flag}</span>
-                                  </Button>
+                                  </button>
                           {isLanguageOpen ? (
                         <div className="absolute left-0 top-14 z-30 w-56 overflow-hidden rounded-2xl border border-[#E8DDD1] bg-white py-2 shadow-xl">
                           {languageOptions.map((language) => (
@@ -547,7 +547,7 @@ function Hero({
                                                             >
                                                             <span className="text-xl">{language.flag}</span>
                                                             <span>{language.label}</span>
-                                          </Button>
+                                          </button>
                                         ))}
                         </div>
                       ) : null}
@@ -582,8 +582,8 @@ function CategorySection({ language, t }: { language: LanguageCode; t: Record<st
                                     <Card key={category.name} className={cn("rounded-[1.4rem]", category.tone)}>
                                                   <CardContent className="flex min-h-44 flex-col items-center justify-center p-5 text-center">
                                                                   <Icon size={42} strokeWidth={1.35} className="mb-4 text-stone-700" />
-                                                                  <div className="font-semibold tracking-wide">{categoryNames[language][category.name]}</div>
-                                                                  <div className="text-sm text-stone-600">{category.name}</div>
+                                                                  <div className="font-semibold tracking-wide">{categoryNames[language][category.name]}
+                                                                  <div className="text-sm text-stone-600">{category.name}
                                                                   <div className="mt-5 w-full border-t border-white/70 pt-3 text-xs text-stone-500">
                                                                     {category.count} items
                                                                   </div>
@@ -629,17 +629,17 @@ function ProductCard({
                                               <PhotoPlaceholder t={t} />
                                   </div>
                                   <div className="mt-4">
-                                              <div className="font-semibold tracking-wide">{localizedProduct.name}</div>
-                                              <div className="text-xs text-stone-500">{product.name}</div>
-                                              <div className="mt-2 text-2xl font-semibold text-[#C86F58]">{product.price}</div>
+                                              <div className="font-semibold tracking-wide">{localizedProduct.name}
+                                              <div className="text-xs text-stone-500">{product.name}
+                                              <div className="mt-2 text-2xl font-semibold text-[#C86F58]">{product.price}
                                               <div className={cn("mt-3 rounded-xl px-3 py-2 text-center text-xs font-medium", product.tone)}>
-                                                            <div>{localizedProduct.status}</div>
-                                                            <div className="text-[11px] opacity-80">{product.status}</div>
+                                                            <div>{localizedProduct.status}
+                                                            <div className="text-[11px] opacity-80">{product.status}
                                               </div>
                                   </div>
                         </CardContent>
                 </Card>
-          </Button>
+          </button>
         );
 }
 
@@ -662,7 +662,7 @@ function NewItemsSection({
                         </div>
                         <Button variant="outline" className="hidden px-5 py-2.5 text-stone-600 md:inline-flex">
                           {t.viewAll}
-                        </Button>
+                        </button>
                 </div>
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
                   {products.map((product) => (
@@ -697,13 +697,13 @@ function FeaturedProduct({ selected, language, t }: { selected: Product; languag
                                   <div className="mb-3 flex items-center gap-2 text-[#54805D]">
                                               <span className="h-6 w-1 rounded-full bg-[#9EB99A]" />
                                               <div>
-                                                            <div className="text-xl font-semibold tracking-wide">{t.featuredJa}</div>
-                                                            <div className="text-xs text-stone-500">{t.featuredEn}</div>
+                                                            <div className="text-xl font-semibold tracking-wide">{t.featuredJa}
+                                                            <div className="text-xs text-stone-500">{t.featuredEn}
                                               </div>
                                   </div>
                                   <h3 className="text-3xl font-semibold tracking-wide">{localizedProduct.name}</h3>
                                   <p className="text-stone-500">{selected.name}</p>
-                                  <div className="mt-4 text-4xl font-semibold text-[#C86F58]">{selected.price}</div>
+                                  <div className="mt-4 text-4xl font-semibold text-[#C86F58]">{selected.price}
                                   <div className="mt-5 space-y-3 text-sm">
                                               <div className="rounded-xl bg-[#EDF4EC] px-4 py-3 text-[#58715A]">
                                                             <CheckCircle2 className="mr-2 inline" size={17} />
@@ -763,8 +763,8 @@ function HowToUseSection({ language, t }: { language: LanguageCode; t: Record<st
                                                     {String(index + 1).padStart(2, "0")}
                                                   </div>
                                                   <Icon className="mx-auto mb-3 text-stone-700" size={28} strokeWidth={1.4} />
-                                                  <div className="text-sm font-semibold">{label.label}</div>
-                                                  <div className="mt-1 text-xs text-stone-500">{label.sub}</div>
+                                                  <div className="text-sm font-semibold">{label.label}
+                                                  <div className="mt-1 text-xs text-stone-500">{label.sub}
                                     </div>
                                   );
           })}
@@ -783,21 +783,21 @@ function Footer({ t }: { t: Record<string, string> }) {
                                   <p className="mt-1 text-xs text-stone-500">{t.footerSub}</p>
                         </div>
                         <div className="space-y-1 text-sm text-stone-600">
-                                  <div className="mb-2 font-semibold text-stone-800">{t.quickLinks}</div>
+                                  <div className="mb-2 font-semibold text-stone-800">{t.quickLinks}
                                   <p>{t.navHome}</p>
                                   <p>{t.navCategories}</p>
                                   <p>{t.navNewItems}</p>
                                   <p>{t.navHowToUse}</p>
                         </div>
                         <div className="space-y-1 text-sm text-stone-600">
-                                  <div className="mb-2 font-semibold text-stone-800">{t.support}</div>
+                                  <div className="mb-2 font-semibold text-stone-800">{t.support}
                                   <p>{t.faq}</p>
                                   <p>{t.deliveryFooter}</p>
                                   <p>{t.payment}</p>
                                   <p>{t.legal}</p>
                         </div>
                         <div>
-                                  <div className="mb-3 font-semibold text-stone-800">{t.contactUs}</div>
+                                  <div className="mb-3 font-semibold text-stone-800">{t.contactUs}
                                   <a
                                                 href={LINE_URL}
                                                 target="_blank"
