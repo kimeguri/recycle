@@ -39,7 +39,7 @@ const languageOptions: Array<{ code: LanguageCode; label: string; flag: string }
   { code: "id", label: "Bahasa Indonesia", flag: "\u{1F1EE}\u{1F1E9}" },
 ];
 
-const translations = { ja: { subtitle: "\u65E5\u672C\u3067\u306E\u65B0\u751F\u6D3B\u306B\u3001\u3084\u3055\u3057\u3044\u30EA\u30E6\u30FC\u30B9\u54C1\u3092\u3002", navHome: "\u30DB\u30FC\u30E0", navCategories: "\u30AB\u30C6\u30B4\u30EA\u30FC", navNewItems: "\u65B0\u7740\u5546\u54C1", navHowToUse: "\u4F7F\u3044\u65B9", navContact: "\u304A\u554F\u3044\u5408\u308F\u305B", search: "\u5546\u54C1\u3092\u691C\u7D22", line: "LINE\u3067\u76F8\u8AC7", photoJa: "\u5199\u771F\u3092\u8FFD\u52A0", photoEn: "Add your photo", heroTitle: "Discover Unique Treasures for your Home", heroLead: "\u5BB6\u5177\u30FB\u5BB6\u96FB\u30FB\u65E5\u7528\u54C1\u3092\u3001\u3084\u3055\u3057\u3044\u4FA1\u683C\u3067\u304A\u5C4A\u3051\u3059\u308B\u30EA\u30E6\u30FC\u30B9\u30DE\u30FC\u30B1\u30C3\u30C8\u3067\u3059\u3002", heroSub: "Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.", viewItems: "\u5546\u54C1\u3092\u898B\u308B", howFlow: "\u3054\u5229\u7528\u306E\u6D41\u308C", categoriesJa: "\u30AB\u30C6\u30B4\u30EA\u30FC\u304B\u3089\u63A2\u3059", categoriesEn: "Browse by category", newItemsJa: "\u65B0\u7740\u5546\u54C1", newItemsEn: "New Items", viewAll: "\u3059\u3079\u3066\u898B\u308B", featuredJa: "\u304A\u3059\u3059\u3081\u5546\u54C1", featuredEn: "Featured Item", popular: "\u4EBA\u6C17\u5546\u54C1", popularEn: "Popular", delivery: "\u53D7\u3051\u53D6\u308A\u30FB\u914D\u9001\u306B\u5BFE\u5FDC\u3067\u304D\u307E\u3059", deliveryEn: "Pickup / Delivery available", productNote: "\u3053\u3061\u3089\u306F\u4E2D\u53E4\u54C1\u3067\u3059\u3002\u5C0F\u3055\u306A\u30AD\u30BA\u3084\u4F7F\u7528\u611F\u304C\u3042\u308B\u5834\u5408\u304C\u3042\u308A\u307E\u3059\u304C\u3001\u307E\u3060\u6C17\u6301\u3061\u3088\u304F\u4F7F\u3048\u308B\u5546\u54C1\u3067\u3059\u3002\u65E5\u672C\u3067\u65B0\u751F\u6D3B\u3092\u59CB\u3081\u308B\u65B9\u306B\u304A\u3059\u3059\u3081\u3067\u3059\u3002", checked: "\u52D5\u4F5C\u78BA\u8A8D\u6E08\u307F", cleaned: "\u6E05\u6383\u6E08\u307F", womenSupport: "\u5973\u6027\u30B9\u30BF\u30C3\u30D5\u5BFE\u5FDC\u53EF", askLine: "\u3053\u306E\u5546\u54C1\u306B\u3064\u3044\u3066LINE\u3067\u76F8\u8AC7", footerLead: "\u65E5\u672C\u3067\u306E\u65B0\u751F\u6D3B\u3092\u3001\u3084\u3055\u3057\u304F\u697D\u3057\u304F\u30B9\u30BF\u30FC\u30C8\u3002", footerSub: "A gentle start to your new life in Japan.", quickLinks: "\u30AF\u30A4\u30C3\u30AF\u30EA\u30F3\u30AF", support: "\u30B5\u30DD\u30FC\u30C8", faq: "\u3088\u304F\u3042\u308B\u8CEA\u554F", deliveryFooter: "\u914D\u9001\u30FB\u53D7\u3051\u53D6\u308A", payment: "\u304A\u652F\u6255\u3044\u65B9\u6CD5", legal: "\u3054\u5229\u7528\u6848\u5185", contactUs: "\u304A\u554F\u3044\u5408\u308F\u305B", contactMail: "\u30E1\u30FC\u30EB\u3067\u76F8\u8AC7", },
+const translations = { ja: { subtitle: "\u65E5\u672C\u3067\u306E\u751F\u6D3B\u306B\u3001\u3084\u3055\u3057\u3044\u30EA\u30E6\u30FC\u30B9\u54C1\u3092", navHome: "\u30DB\u30FC\u30E0", navCategories: "\u30AB\u30C6\u30B4\u30EA\u30FC", navNewItems: "\u65B0\u7740\u5546\u54C1", navHowToUse: "\u4F7F\u3044\u65B9", navContact: "\u304A\u554F\u3044\u5408\u308F\u305B", search: "\u5546\u54C1\u3092\u691C\u7D22", line: "LINE\u3067\u76F8\u8AC7", photoJa: "\u5199\u771F\u3092\u8FFD\u52A0", photoEn: "Add your photo", heroTitle: "Discover Unique Treasures for your Home", heroLead: "\u5BB6\u5177\u30FB\u5BB6\u96FB\u30FB\u65E5\u7528\u54C1\u3092\u3001\u3084\u3055\u3057\u3044\u4FA1\u683C\u3067\u304A\u5C4A\u3051\u3059\u308B\u30EA\u30E6\u30FC\u30B9\u30DE\u30FC\u30B1\u30C3\u30C8\u3067\u3059\u3002", heroSub: "Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.", viewItems: "\u5546\u54C1\u3092\u898B\u308B", howFlow: "\u3054\u5229\u7528\u306E\u6D41\u308C", categoriesJa: "\u30AB\u30C6\u30B4\u30EA\u30FC\u304B\u3089\u63A2\u3059", categoriesEn: "Browse by category", newItemsJa: "\u65B0\u7740\u5546\u54C1", newItemsEn: "New Items", viewAll: "\u3059\u3079\u3066\u898B\u308B", featuredJa: "\u304A\u3059\u3059\u3081\u5546\u54C1", featuredEn: "Featured Item", popular: "\u4EBA\u6C17\u5546\u54C1", popularEn: "Popular", delivery: "\u53D7\u3051\u53D6\u308A\u30FB\u914D\u9001\u306B\u5BFE\u5FDC\u3067\u304D\u307E\u3059", deliveryEn: "Pickup / Delivery available", productNote: "\u3053\u3061\u3089\u306F\u4E2D\u53E4\u54C1\u3067\u3059\u3002\u5C0F\u3055\u306A\u30AD\u30BA\u3084\u4F7F\u7528\u611F\u304C\u3042\u308B\u5834\u5408\u304C\u3042\u308A\u307E\u3059\u304C\u3001\u307E\u3060\u6C17\u6301\u3061\u3088\u304F\u4F7F\u3048\u308B\u5546\u54C1\u3067\u3059\u3002\u65E5\u672C\u3067\u65B0\u751F\u6D3B\u3092\u59CB\u3081\u308B\u65B9\u306B\u304A\u3059\u3059\u3081\u3067\u3059\u3002", checked: "\u52D5\u4F5C\u78BA\u8A8D\u6E08\u307F", cleaned: "\u6E05\u6383\u6E08\u307F", womenSupport: "\u5973\u6027\u30B9\u30BF\u30C3\u30D5\u5BFE\u5FDC\u53EF", askLine: "\u3053\u306E\u5546\u54C1\u306B\u3064\u3044\u3066LINE\u3067\u76F8\u8AC7", footerLead: "\u65E5\u672C\u3067\u306E\u65B0\u751F\u6D3B\u3092\u3001\u3084\u3055\u3057\u304F\u697D\u3057\u304F\u30B9\u30BF\u30FC\u30C8\u3002", footerSub: "A gentle start to your new life in Japan.", quickLinks: "\u30AF\u30A4\u30C3\u30AF\u30EA\u30F3\u30AF", support: "\u30B5\u30DD\u30FC\u30C8", faq: "\u3088\u304F\u3042\u308B\u8CEA\u554F", deliveryFooter: "\u914D\u9001\u30FB\u53D7\u3051\u53D6\u308A", payment: "\u304A\u652F\u6255\u3044\u65B9\u6CD5", legal: "\u3054\u5229\u7528\u6848\u5185", contactUs: "\u304A\u554F\u3044\u5408\u308F\u305B", contactMail: "\u30E1\u30FC\u30EB\u3067\u76F8\u8AC7", },
   vi: {
     subtitle: "Đồ cũ cho cuộc sống mới của bạn tại Nhật Bản.",
     navHome: "Trang chủ",
@@ -275,7 +275,7 @@ const products: Product[] = [
   },
   {
     id: "S-004",
-    name: "Welcome Starter Pack",
+    name: "KiMEGURi Starter Pack",
     ja: "新生活スタートセット",
     price: "¥5,000",
     status: "Recommended",
@@ -462,13 +462,13 @@ function Header({ t }: { t: Record<string, string> }) {
   return (
     <header className="sticky top-0 z-20 border-b border-[#E8DDD1] bg-[#FBF8F3]/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
-        <a href="#top" className="flex items-center gap-3" aria-label="WELCOME Reuse Market Home">
+        <a href="#top" className="flex items-center gap-3" aria-label="KiMEGURi Reuse Market Home">
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#C8B49B] bg-white text-[#54805D]">
             <Home size={25} strokeWidth={1.6} />
           </div>
           <div>
             <div className="text-xl font-semibold tracking-tight sm:text-2xl">
-              <span className="text-[#C86F58]">WELCOME</span> Reuse Market
+              <span className="text-[#C86F58]">KiMEGURi</span> Reuse Market
             </div>
             <div className="hidden text-xs tracking-wide text-stone-500 sm:block">
               {t.subtitle}
@@ -782,7 +782,7 @@ function Footer({ t }: { t: Record<string, string> }) {
     <footer id="contact" className="mt-14 border-t border-[#E8DDD1] bg-[#F4EEE5]">
       <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
         <div>
-          <div className="text-xl font-semibold"><span className="text-[#C86F58]">WELCOME</span> Reuse Market</div>
+          <div className="text-xl font-semibold"><span className="text-[#C86F58]">KiMEGURi</span> Reuse Market</div>
           <p className="mt-2 text-sm text-stone-600">{t.footerLead}</p>
           <p className="mt-1 text-xs text-stone-500">{t.footerSub}</p>
         </div>
@@ -819,7 +819,7 @@ function Footer({ t }: { t: Record<string, string> }) {
         </div>
       </div>
       <div className="border-t border-[#E8DDD1] py-4 text-center text-xs text-stone-500">
-        © 2025 WELCOME Reuse Market. All rights reserved.
+        © 2025 KiMEGURi Reuse Market. All rights reserved.
       </div>
     </footer>
   );
