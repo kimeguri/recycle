@@ -240,10 +240,10 @@ function Hero() {
         <p className="mt-4 text-xl font-medium tracking-wide text-[#C86F58]">{"\u5bb6\u5177\u30fb\u5bb6\u96fb\u30fb\u65e5\u7528\u54c1\u3092\u3001\u3084\u3055\u3057\u3044\u4fa1\u683c\u3067\u304a\u5c4a\u3051\u3059\u308b\u30ea\u30e6\u30fc\u30b9\u30de\u30fc\u30b1\u30c3\u30c8\u3067\u3059\u3002"}</p><p className="mt-2 text-sm leading-6 text-stone-500">A reuse market delivering furniture, appliances, and daily goods at friendly prices.</p><p className="hidden">
           やさしい価格で、くらしをそろえよう。
         </p>
-        <p className="mt-5 max-w-xl text-sm leading-8 text-stone-700">
+        <p className="hidden">
           家具・家電・日用品を、やさしい価格でお届けします。日本で暮らし始める外国人の方に向けた、生活用品専門のリユースマーケットです。
         </p>
-        <p className="mt-3 max-w-xl text-sm leading-7 text-stone-500">
+        <p className="hidden">
           Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
