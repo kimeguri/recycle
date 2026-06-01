@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+{t.productNote} <span className="mt-5 block rounded-2xl border border-[#E8DDD1] bg-[#FBF8F3] p-4"><span className="block text-sm font-semibold text-stone-800">{localizedProduct.name} Details</span>span><span className="mt-2 block text-xs leading-6 text-stone-600">Photos, video, size, condition, and pickup details can be added here.</span>span><span className="mt-4 grid gap-2 sm:grid-cols-3"><span className="rounded-xl bg-white px-3 py-2 text-xs text-stone-600"><span className="block font-semibold text-stone-800">Photo</span>span>Up to 3 images</span>span><span className="rounded-xl bg-white px-3 py-2 text-xs text-stone-600"><span className="block font-semibold text-stone-800">Video</span>span>1 product video</span>span><span className="rounded-xl bg-white px-3 py-2 text-xs text-stone-600"><span className="block font-semibold text-stone-800">Details</span>span>Condition / size</span>span></span>span></span>span></span>
 import type { ButtonHTMLAttributes, HTMLAttributes, ComponentType } from "react";
 import type { LucideProps } from "lucide-react";
 import {
