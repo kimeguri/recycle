@@ -361,7 +361,7 @@ const products = [
               status: "Cleaned & Good condition",
               statusJa: "\u6E05\u6383\u6E08\u307F\u30FB\u72B6\u614B\u826F\u597D",
               tone: "bg-[#EDF4EC] text-[#58715A]",
-              image: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=700&q=80",
+              image: "https://images.unsplash.com/photo-1748408082799-94daff13e792?auto=format&fit=crop&w=700&q=80",
               imageAlt: "Electric kettle on a kitchen counter",
               photos: "3 images",
               video: "Boiling test video",
