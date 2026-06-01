@@ -634,7 +634,7 @@ function Hero({
         const currentOption = languageOptions.find((language) => language.code === currentLanguage) ?? languageOptions[0];
 
   return (/*#__PURE__*/
-            _jsxs("section", { id: "top", className: "grid gap-10 rounded-[1.8rem] border border-[#E8DDD1] bg-white p-6 shadow-sm md:grid-cols-[0.95fr_1.05fr] md:p-12", children: [/*#__PURE__*/
+            _jsxs("section", { id: "top", className: "scroll-mt-40 grid gap-10 rounded-[1.8rem] border border-[#E8DDD1] bg-white p-6 shadow-sm md:grid-cols-[0.95fr_1.05fr] md:p-12", children: [/*#__PURE__*/
                                     _jsxs("div", { className: "flex flex-col justify-center", children: [/*#__PURE__*/
                                                           _jsxs("div", { className: "relative mb-6 w-fit", "aria-label": "Language support", children: [/*#__PURE__*/
                                                                                   _jsxs("button", {
