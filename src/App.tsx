@@ -297,7 +297,13 @@ const products = [
               status: "Cleaned & Good condition",
               statusJa: "\u6E05\u6383\u6E08\u307F\u30FB\u72B6\u614B\u826F\u597D",
               badge: "\u4EBA\u6C17",
-              tone: "bg-[#EDF4EC] text-[#58715A]"
+              tone: "bg-[#EDF4EC] text-[#58715A]",
+              image: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=700&q=80",
+              imageAlt: "Clean refrigerator in a home kitchen",
+              photos: "3 images",
+              video: "Short operation check video",
+              size: "W48 x D53 x H112 cm",
+              condition: "Cleaned / minor signs of use"
       },
       {
               id: "F-002",
@@ -307,7 +313,13 @@ const products = [
               status: "Used - Good",
               statusJa: "\u826F\u54C1\u30FB\u7F8E\u54C1",
               badge: "\u304A\u3059\u3059\u3081",
-              tone: "bg-[#F6ECDD] text-[#8A6640]"
+              tone: "bg-[#F6ECDD] text-[#8A6640]",
+              image: "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=700&q=80",
+              imageAlt: "Wooden dining chair",
+              photos: "3 images",
+              video: "360 degree view video",
+              size: "W45 x D48 x H82 cm",
+              condition: "Good / small scratches"
       },
       {
               id: "K-003",
@@ -317,7 +329,13 @@ const products = [
               status: "Set item",
               statusJa: "\u30BB\u30C3\u30C8\u5546\u54C1",
               badge: "\u4EBA\u6C17",
-              tone: "bg-[#E9F2F7] text-[#466B82]"
+              tone: "bg-[#E9F2F7] text-[#466B82]",
+              image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=80",
+              imageAlt: "Kitchen tools and cookware",
+              photos: "4 images",
+              video: "Item overview video",
+              size: "Pan / pot / tools set",
+              condition: "Cleaned / set contents checked"
       },
       {
               id: "S-004",
@@ -327,7 +345,13 @@ const products = [
               status: "Recommended",
               statusJa: "\u304A\u3059\u3059\u3081",
               badge: "\u304A\u3059\u3059\u3081",
-              tone: "bg-[#F8E9E4] text-[#9B5B4D]"
+              tone: "bg-[#F8E9E4] text-[#9B5B4D]",
+              image: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=700&q=80",
+              imageAlt: "Home goods starter pack",
+              photos: "5 images",
+              video: "Set contents video",
+              size: "Compact room starter set",
+              condition: "Ready to use / bundle checked"
       },
       {
               id: "E-005",
@@ -336,7 +360,13 @@ const products = [
               price: "\u00A51,000",
               status: "Cleaned & Good condition",
               statusJa: "\u6E05\u6383\u6E08\u307F\u30FB\u72B6\u614B\u826F\u597D",
-              tone: "bg-[#EDF4EC] text-[#58715A]"
+              tone: "bg-[#EDF4EC] text-[#58715A]",
+              image: "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=700&q=80",
+              imageAlt: "Electric kettle on a kitchen counter",
+              photos: "3 images",
+              video: "Boiling test video",
+              size: "1.0L",
+              condition: "Cleaned / tested"
       }];
 
 
@@ -528,7 +558,7 @@ function SectionTitle({ ja, en, color = "bg-[#D7A18B]" }) {
 
 function Header({ t }) {
         return (/*#__PURE__*/
-                  _jsx("header", { className: "sticky top-0 z-20 border-b border-[#E8DDD1] bg-[#FBF8F3]/95 backdrop-blur", children: /*#__PURE__*/
+                  _jsxs("header", { className: "sticky top-0 z-20 border-b border-[#E8DDD1] bg-[#FBF8F3]/95 backdrop-blur", children: [/*#__PURE__*/
                                         _jsxs("div", { className: "mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6", children: [/*#__PURE__*/
                                                               _jsxs("a", { href: "#top", className: "flex items-center gap-3", "aria-label": "KiMEGURi Reuse Market Home", children: [/*#__PURE__*/
                                                                                     _jsx("div", { className: "flex h-11 w-11 items-center justify-center rounded-2xl border border-[#C8B49B] bg-white text-[#54805D]", children: /*#__PURE__*/
@@ -571,7 +601,22 @@ function Header({ t }) {
                                                       _jsx("button", { className: "inline-flex rounded-full border border-[#E2D5C6] bg-white p-2 text-stone-700 lg:hidden", "aria-label": "Open menu", children: /*#__PURE__*/
                                                                                 _jsx(Menu, { size: 22 }) }
                                                                    )] }
-                                                    ) }
+                                                    ), /*#__PURE__*/
+                                  _jsxs("div", { className: "mx-auto flex max-w-7xl items-center gap-3 border-t border-[#E8DDD1] px-4 pb-3 pt-3 sm:px-6 md:hidden", children: [/*#__PURE__*/
+                                                            _jsxs("label", { className: "flex min-w-0 flex-1 items-center gap-2 rounded-full border border-[#E2D5C6] bg-white px-4 py-3 text-xs text-stone-400", children: [/*#__PURE__*/
+                                                                                          _jsx("span", { className: "sr-only", children: t.search }), /*#__PURE__*/
+                                                                                  _jsx("input", { className: "min-w-0 flex-1 bg-transparent outline-none placeholder:text-stone-400", placeholder: t.search }), /*#__PURE__*/
+                                                                                  _jsx(Search, { size: 16 })] }
+                                                                                ), /*#__PURE__*/
+                                                    _jsxs("a", {
+                                                                      href: LINE_URL,
+                                                                      target: "_blank",
+                                                                      rel: "noreferrer",
+                                                                      className: "inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#4E9D5C] px-4 text-sm font-medium text-white transition hover:bg-[#438B50]", children: [/*#__PURE__*/
+
+                                                                      _jsx(MessageCircle, { size: 16 }), " ", t.line] }
+                                                                    )] }
+                                                  )] }
                            ));
 
 }
@@ -684,7 +729,7 @@ function ProductCard({
         const localizedProduct = productNames[language][product.id];
 
   return (/*#__PURE__*/
-            _jsx("button", { type: "button", onClick: () => onSelect(product), className: "text-left", children: /*#__PURE__*/
+            _jsx("button", { type: "button", onClick: () => onSelect(product), className: "w-full text-left", children: /*#__PURE__*/
                                   _jsx(Card, {
                                                 className: cn(
                                                                 "overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md",
@@ -698,7 +743,7 @@ function ProductCard({
                                                                                                                     localizedProduct.badge ?? product.badge }
                                                                                                                  ) :
                                                                                                 null, /*#__PURE__*/
-                                                                                                _jsx(PhotoPlaceholder, { t: t })] }
+                                                                                                _jsx("img", { src: product.image, alt: product.imageAlt, loading: "lazy", className: "h-44 w-full rounded-[1.2rem] object-cover sm:h-36" })] }
                                                                                               ), /*#__PURE__*/
                                                                 _jsxs("div", { className: "mt-4", children: [/*#__PURE__*/
                                                                                           _jsx("div", { className: "font-semibold tracking-wide", children: localizedProduct.name }), /*#__PURE__*/
@@ -761,7 +806,7 @@ function FeaturedProduct({ selected, language, t }) {
                                                           _jsxs("div", { className: "absolute left-0 top-0 z-10 rounded-br-2xl rounded-tl-[1.4rem] bg-[#D69A4E] px-4 py-3 text-sm font-medium text-white", children: [
                                                                           t.popular, /*#__PURE__*/_jsx("br", {}), /*#__PURE__*/_jsx("span", { className: "text-xs opacity-90", children: t.popularEn })] }
                                                                         ), /*#__PURE__*/
-                                                  _jsx(PhotoPlaceholder, { large: true, t: t })] }
+                                                  _jsx("div", { className: "h-full min-h-[300px] overflow-hidden rounded-[1.4rem] bg-[#EEE8E0]", children: /*#__PURE__*/_jsx("img", { src: selected.image, alt: selected.imageAlt, className: "h-full min-h-[300px] w-full object-cover" }) })] }
                                                 ), /*#__PURE__*/
 
                         _jsxs("div", { className: "grid gap-6 lg:grid-cols-[0.85fr_1.15fr]", children: [/*#__PURE__*/
@@ -794,25 +839,17 @@ function FeaturedProduct({ selected, language, t }) {
 
                                       _jsxs("div", { className: "flex flex-col justify-center", children: [/*#__PURE__*/
                                                               _jsx("p", { className: "text-sm leading-7 text-stone-700", children: t.productNote }), /*#__PURE__*/
-                                                      _jsxs("div", { className: "mt-5 rounded-2xl border border-[#E8DDD1] bg-[#FBF8F3] p-4", children: [/*#__PURE__*/
-                                                                                _jsxs("div", { className: "text-sm font-semibold text-stone-800", children: [localizedProduct.name, " details"] }), /*#__PURE__*/
-                                                                        _jsx("p", { className: "mt-2 text-xs leading-6 text-stone-600", children: "Photos, video, size, condition, and pickup details can be added here before customers ask on LINE." }
-
-                                                                                         ), /*#__PURE__*/
-                                                                        _jsxs("div", { className: "mt-4 grid gap-2 sm:grid-cols-3", children: [/*#__PURE__*/
-                                                                                                    _jsxs("div", { className: "rounded-xl bg-white px-3 py-2 text-xs text-stone-600", children: [/*#__PURE__*/
-                                                                                                                                  _jsx("span", { className: "block font-semibold text-stone-800", children: "Photos" }), "Up to 3 images"] }
-                                                                                                          
-                                                                                                                        ), /*#__PURE__*/
-                                                                                            _jsxs("div", { className: "rounded-xl bg-white px-3 py-2 text-xs text-stone-600", children: [/*#__PURE__*/
-                                                                                                                          _jsx("span", { className: "block font-semibold text-stone-800", children: "Video" }), "1 product video"] }
-
-                                                                                                                ), /*#__PURE__*/
-                                                                                            _jsxs("div", { className: "rounded-xl bg-white px-3 py-2 text-xs text-stone-600", children: [/*#__PURE__*/
-                                                                                                                          _jsx("span", { className: "block font-semibold text-stone-800", children: "Details" }), "Condition / size"] }
-
-                                                                                                                )] }
-                                                                                          )] }
+                                                      _jsxs("div", { className: "mt-5 overflow-hidden rounded-2xl border border-[#E8DDD1] bg-[#FBF8F3]", children: [/*#__PURE__*/
+                                                                                _jsxs("div", { className: "border-b border-[#E8DDD1] px-4 py-3", children: [/*#__PURE__*/
+                                                                                                          _jsxs("div", { className: "text-sm font-semibold text-stone-800", children: [localizedProduct.name, " details"] }), /*#__PURE__*/
+                                                                                                  _jsx("p", { className: "mt-1 text-xs leading-5 text-stone-600", children: "Photos, video, size, and condition are organized before customers ask on LINE." })] }
+                                                                                               ), /*#__PURE__*/
+                                                                        _jsxs("div", { className: "divide-y divide-[#E8DDD1] text-sm", children: [/*#__PURE__*/
+                                                                                                  _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Photos" }), /*#__PURE__*/_jsx("div", { className: "text-stone-600", children: selected.photos })] }), /*#__PURE__*/
+                                                                                          _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Video" }), /*#__PURE__*/_jsx("div", { className: "text-stone-600", children: selected.video })] }), /*#__PURE__*/
+                                                                                          _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Size" }), /*#__PURE__*/_jsx("div", { className: "text-stone-600", children: selected.size })] }), /*#__PURE__*/
+                                                                                          _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Condition" }), /*#__PURE__*/_jsxs("div", { className: "text-stone-600", children: [localizedProduct.status, " / ", selected.condition] })] })] }
+                                                                                        )] }
                                                                       ), /*#__PURE__*/
                                                       _jsxs("div", { className: "mt-5 flex flex-wrap gap-2 text-xs", children: [/*#__PURE__*/
                                                                                 _jsxs("span", { className: "inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600", children: [/*#__PURE__*/
@@ -869,7 +906,7 @@ function Footer({ t }) {
                                          _jsxs("div", { className: "mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]", children: [/*#__PURE__*/
                                                                _jsxs("div", { children: [/*#__PURE__*/
                                                                                        _jsxs("div", { className: "text-xl font-semibold", children: [/*#__PURE__*/_jsx("span", { className: "text-[#C86F58]", children: "KiMEGURi" }), " Reuse Market"] }), /*#__PURE__*/
-                                                                               
+                                                                               _jsx("p", { className: "mt-3 max-w-xs text-sm leading-6 text-stone-600", children: "Discover Unique Treasures for your Home" }), /*#__PURE__*/
                                                                                ] }
                                                                              ), /*#__PURE__*/
                                                        _jsxs("div", { className: "space-y-1 text-sm text-stone-600", children: [/*#__PURE__*/
