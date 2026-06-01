@@ -231,8 +231,8 @@ function Hero() {
   return (
     <section id="top" className="grid gap-10 rounded-[1.8rem] border border-[#E8DDD1] bg-white p-6 shadow-sm md:grid-cols-[0.95fr_1.05fr] md:p-12">
       <div className="flex flex-col justify-center">
-        <div className="mb-6 inline-flex w-fit rounded-full bg-[#C86F58] px-4 py-2 text-sm font-medium text-white">
-          やさしい日本語 / English support
+        <div className="hidden">
+          やさしい日本語 / </div><div className="mb-6 flex flex-wrap gap-2" aria-label="Language support">{[{ label: "Vietnamese support", flag: "\u{1F1FB}\u{1F1F3}" }, { label: "Sinhala support", flag: "\u{1F1F1}\u{1F1F0}" }, { label: "Nepali support", flag: "\u{1F1F3}\u{1F1F5}" }, { label: "Indonesian support", flag: "\u{1F1EE}\u{1F1E9}" }].map(({ label, flag }) => (<button key={label} type="button" aria-label={label} title={label} className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E8DDD1] bg-white text-2xl shadow-sm transition hover:-translate-y-0.5 hover:border-[#C86F58] hover:shadow-md">{flag}</button>))}</div><div className="hidden">
         </div>
         <h1 className="text-4xl font-semibold leading-[1.35] tracking-[0.04em] text-stone-900 md:text-5xl">
           Discover Unique Treasures for Your Home
