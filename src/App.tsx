@@ -687,31 +687,9 @@ function Hero({
                                                                                                                 _jsx(BookOpen, { size: 18 }), " ", t.howFlow] }
                                                                                                         )] }
                                                                                       )] }
-                                                                      ), /*#__PURE__*/
-                                                  _jsxs("div", { className: "grid gap-3 border-t border-white/20 pt-5 text-sm text-white/85 sm:grid-cols-3", children: [/*#__PURE__*/
-                                                                        _jsxs("div", { className: "flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur", children: [/*#__PURE__*/
-                                                                                              _jsx(Sofa, { size: 18, strokeWidth: 1.6, className: "text-[#F4D7B4]" }), /*#__PURE__*/
-                                                                                              _jsxs("div", { children: [/*#__PURE__*/
-                                                                                                                    _jsx("div", { className: "font-semibold text-white", children: categoryNames[currentLanguage].Furniture }), /*#__PURE__*/
-                                                                                                                    _jsx("div", { className: "text-xs text-white/65", children: "Furniture" })] }
-                                                                                                            )] }
-                                                                                  ), /*#__PURE__*/
-                                                                        _jsxs("div", { className: "flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur", children: [/*#__PURE__*/
-                                                                                              _jsx(Refrigerator, { size: 18, strokeWidth: 1.6, className: "text-[#F4D7B4]" }), /*#__PURE__*/
-                                                                                              _jsxs("div", { children: [/*#__PURE__*/
-                                                                                                                    _jsx("div", { className: "font-semibold text-white", children: categoryNames[currentLanguage].Appliances }), /*#__PURE__*/
-                                                                                                                    _jsx("div", { className: "text-xs text-white/65", children: "Appliances" })] }
-                                                                                                            )] }
-                                                                                  ), /*#__PURE__*/
-                                                                        _jsxs("div", { className: "flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-4 py-3 backdrop-blur", children: [/*#__PURE__*/
-                                                                                              _jsx(Package, { size: 18, strokeWidth: 1.6, className: "text-[#F4D7B4]" }), /*#__PURE__*/
-                                                                                              _jsxs("div", { children: [/*#__PURE__*/
-                                                                                                                    _jsx("div", { className: "font-semibold text-white", children: categoryNames[currentLanguage]["Daily Goods"] }), /*#__PURE__*/
-                                                                                                                    _jsx("div", { className: "text-xs text-white/65", children: "Daily Goods" })] }
-                                                                                                            )] }
-                                                                                  )] }
-                                                                )] }
-                                                )] }
+
+)
+] }                                                )] }
                       ));
 
 }
