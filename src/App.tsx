@@ -869,8 +869,8 @@ function Footer({ t }) {
                                          _jsxs("div", { className: "mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]", children: [/*#__PURE__*/
                                                                _jsxs("div", { children: [/*#__PURE__*/
                                                                                        _jsxs("div", { className: "text-xl font-semibold", children: [/*#__PURE__*/_jsx("span", { className: "text-[#C86F58]", children: "KiMEGURi" }), " Reuse Market"] }), /*#__PURE__*/
-                                                                               _jsx("p", { className: "mt-2 text-sm text-stone-600", children: t.footerLead }), /*#__PURE__*/
-                                                                               _jsx("p", { className: "mt-1 text-xs text-stone-500", children: t.footerSub })] }
+                                                                               
+                                                                               ] }
                                                                              ), /*#__PURE__*/
                                                        _jsxs("div", { className: "space-y-1 text-sm text-stone-600", children: [/*#__PURE__*/
                                                                                _jsx("div", { className: "mb-2 font-semibold text-stone-800", children: t.quickLinks }), /*#__PURE__*/
