@@ -30,16 +30,16 @@ import {
 const LINE_URL = "https://lin.ee/Pw6OOlu";
 
 type IconComponent = ComponentType<LucideProps>;
-type LanguageCode = "vi" | "si" | "ne" | "id";
+type LanguageCode = "ja" | "vi" | "si" | "ne" | "id";
 
-const languageOptions: Array<{ code: LanguageCode; label: string; flag: string }> = [
+const languageOptions: Array<{ code: LanguageCode; label: string; flag: string }> = [ { code: "ja", label: "\u65E5\u672C\u8A9E / English", flag: "\u{1F1EF}\u{1F1F5}" },
   { code: "vi", label: "Tiếng Việt", flag: "\u{1F1FB}\u{1F1F3}" },
   { code: "si", label: "සිංහල", flag: "\u{1F1F1}\u{1F1F0}" },
   { code: "ne", label: "नेपाली", flag: "\u{1F1F3}\u{1F1F5}" },
   { code: "id", label: "Bahasa Indonesia", flag: "\u{1F1EE}\u{1F1E9}" },
 ];
 
-const translations = {
+const translations = { ja: { subtitle: "\u65E5\u672C\u3067\u306E\u65B0\u751F\u6D3B\u306B\u3001\u3084\u3055\u3057\u3044\u30EA\u30E6\u30FC\u30B9\u54C1\u3092\u3002", navHome: "\u30DB\u30FC\u30E0", navCategories: "\u30AB\u30C6\u30B4\u30EA\u30FC", navNewItems: "\u65B0\u7740\u5546\u54C1", navHowToUse: "\u4F7F\u3044\u65B9", navContact: "\u304A\u554F\u3044\u5408\u308F\u305B", search: "\u5546\u54C1\u3092\u691C\u7D22", line: "LINE\u3067\u76F8\u8AC7", photoJa: "\u5199\u771F\u3092\u8FFD\u52A0", photoEn: "Add your photo", heroTitle: "\u304A\u3046\u3061\u306B\u3074\u3063\u305F\u308A\u306E\u3001\u30E6\u30CB\u30FC\u30AF\u306A\u6398\u308A\u51FA\u3057\u7269\u3092\u898B\u3064\u3051\u3088\u3046", heroLead: "\u5BB6\u5177\u30FB\u5BB6\u96FB\u30FB\u65E5\u7528\u54C1\u3092\u3001\u3084\u3055\u3057\u3044\u4FA1\u683C\u3067\u304A\u5C4A\u3051\u3059\u308B\u30EA\u30E6\u30FC\u30B9\u30DE\u30FC\u30B1\u30C3\u30C8\u3067\u3059\u3002", heroSub: "Discover unique treasures for your home. Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.", viewItems: "\u5546\u54C1\u3092\u898B\u308B", howFlow: "\u3054\u5229\u7528\u306E\u6D41\u308C", categoriesJa: "\u30AB\u30C6\u30B4\u30EA\u30FC\u304B\u3089\u63A2\u3059", categoriesEn: "Browse by category", newItemsJa: "\u65B0\u7740\u5546\u54C1", newItemsEn: "New Items", viewAll: "\u3059\u3079\u3066\u898B\u308B", featuredJa: "\u304A\u3059\u3059\u3081\u5546\u54C1", featuredEn: "Featured Item", popular: "\u4EBA\u6C17\u5546\u54C1", popularEn: "Popular", delivery: "\u53D7\u3051\u53D6\u308A\u30FB\u914D\u9001\u306B\u5BFE\u5FDC\u3067\u304D\u307E\u3059", deliveryEn: "Pickup / Delivery available", productNote: "\u3053\u3061\u3089\u306F\u4E2D\u53E4\u54C1\u3067\u3059\u3002\u5C0F\u3055\u306A\u30AD\u30BA\u3084\u4F7F\u7528\u611F\u304C\u3042\u308B\u5834\u5408\u304C\u3042\u308A\u307E\u3059\u304C\u3001\u307E\u3060\u6C17\u6301\u3061\u3088\u304F\u4F7F\u3048\u308B\u5546\u54C1\u3067\u3059\u3002\u65E5\u672C\u3067\u65B0\u751F\u6D3B\u3092\u59CB\u3081\u308B\u65B9\u306B\u304A\u3059\u3059\u3081\u3067\u3059\u3002", checked: "\u52D5\u4F5C\u78BA\u8A8D\u6E08\u307F", cleaned: "\u6E05\u6383\u6E08\u307F", womenSupport: "\u5973\u6027\u30B9\u30BF\u30C3\u30D5\u5BFE\u5FDC\u53EF", askLine: "\u3053\u306E\u5546\u54C1\u306B\u3064\u3044\u3066LINE\u3067\u76F8\u8AC7", footerLead: "\u65E5\u672C\u3067\u306E\u65B0\u751F\u6D3B\u3092\u3001\u3084\u3055\u3057\u304F\u697D\u3057\u304F\u30B9\u30BF\u30FC\u30C8\u3002", footerSub: "A gentle start to your new life in Japan.", quickLinks: "\u30AF\u30A4\u30C3\u30AF\u30EA\u30F3\u30AF", support: "\u30B5\u30DD\u30FC\u30C8", faq: "\u3088\u304F\u3042\u308B\u8CEA\u554F", deliveryFooter: "\u914D\u9001\u30FB\u53D7\u3051\u53D6\u308A", payment: "\u304A\u652F\u6255\u3044\u65B9\u6CD5", legal: "\u3054\u5229\u7528\u6848\u5185", contactUs: "\u304A\u554F\u3044\u5408\u308F\u305B", contactMail: "\u30E1\u30FC\u30EB\u3067\u76F8\u8AC7", },
   vi: {
     subtitle: "Đồ cũ cho cuộc sống mới của bạn tại Nhật Bản.",
     navHome: "Trang chủ",
@@ -294,7 +294,7 @@ const products: Product[] = [
   },
 ];
 
-const categoryNames: Record<LanguageCode, Record<string, string>> = {
+const categoryNames: Record<LanguageCode, Record<string, string>> = { ja: { Furniture: "\u5BB6\u5177", Appliances: "\u5BB6\u96FB", "Daily Goods": "\u65E5\u7528\u54C1\u30FB\u96D1\u8CA8", Kitchen: "\u30AD\u30C3\u30C1\u30F3\u7528\u54C1", Bedding: "\u5BDD\u5177", "Starter Sets": "\u65B0\u751F\u6D3B\u30BB\u30C3\u30C8", },
   vi: {
     Furniture: "Nội thất",
     Appliances: "Đồ điện",
@@ -329,7 +329,7 @@ const categoryNames: Record<LanguageCode, Record<string, string>> = {
   },
 };
 
-const productNames: Record<LanguageCode, Record<string, { name: string; status: string; badge?: string }>> = {
+const productNames: Record<LanguageCode, Record<string, { name: string; status: string; badge?: string }>> = { ja: { "R-001": { name: "\u51B7\u8535\u5EAB 120L", status: "\u6E05\u6383\u6E08\u307F\u30FB\u72B6\u614B\u826F\u597D", badge: "\u4EBA\u6C17" }, "F-002": { name: "\u6728\u88FD\u30C0\u30A4\u30CB\u30F3\u30B0\u30C1\u30A7\u30A2", status: "\u826F\u54C1\u30FB\u7F8E\u54C1", badge: "\u304A\u3059\u3059\u3081" }, "K-003": { name: "\u30AD\u30C3\u30C1\u30F3\u7528\u54C1\u30BB\u30C3\u30C8", status: "\u30BB\u30C3\u30C8\u5546\u54C1", badge: "\u4EBA\u6C17" }, "S-004": { name: "\u65B0\u751F\u6D3B\u30B9\u30BF\u30FC\u30C8\u30BB\u30C3\u30C8", status: "\u304A\u3059\u3059\u3081", badge: "\u304A\u3059\u3059\u3081" }, "E-005": { name: "\u96FB\u6C17\u30B1\u30C8\u30EB", status: "\u6E05\u6383\u6E08\u307F\u30FB\u72B6\u614B\u826F\u597D" }, },
   vi: {
     "R-001": { name: "Tủ lạnh 120L", status: "Đã vệ sinh, tình trạng tốt", badge: "Phổ biến" },
     "F-002": { name: "Ghế ăn gỗ", status: "Đã qua sử dụng - tốt", badge: "Gợi ý" },
@@ -360,7 +360,7 @@ const productNames: Record<LanguageCode, Record<string, { name: string; status: 
   },
 };
 
-const stepLabels: Record<LanguageCode, Array<{ label: string; sub: string }>> = {
+const stepLabels: Record<LanguageCode, Array<{ label: string; sub: string }>> = { ja: [ { label: "\u5546\u54C1\u3092\u898B\u308B", sub: "Browse items" }, { label: "\u6C17\u306B\u306A\u308B\u5546\u54C1\u3092\u9078\u3076", sub: "Choose an item" }, { label: "LINE\u3067\u554F\u3044\u5408\u308F\u305B", sub: "Contact us on LINE" }, { label: "\u5728\u5EAB\u30FB\u53D7\u3051\u6E21\u3057\u78BA\u8A8D", sub: "Confirm availability" }, { label: "\u53D7\u3051\u53D6\u308A\u30FB\u304A\u652F\u6255\u3044", sub: "Receive & pay" }, ],
   vi: [
     { label: "Xem sản phẩm", sub: "Browse items" },
     { label: "Chọn sản phẩm", sub: "Choose an item" },
@@ -827,7 +827,7 @@ function Footer({ t }: { t: Record<string, string> }) {
 
 export default function App() {
   const [selectedProductId, setSelectedProductId] = useState(products[0].id);
-  const [language, setLanguage] = useState<LanguageCode>("vi");
+  const [language, setLanguage] = useState<LanguageCode>("ja");
   const t = translations[language];
 
   const selectedProduct = useMemo(() => {
