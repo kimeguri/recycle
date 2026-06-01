@@ -436,9 +436,9 @@ function PhotoPlaceholder({ large = false, t }: { large?: boolean; t: Record<str
                           )}
                 >
                 <ImageIcon size={large ? 54 : 34} strokeWidth={1.4} />
-                <div className="mt-3 text-sm font-medium">{t.photoJa}</div>div>
-                <div className="text-xs">{t.photoEn}</div>div>
-          </div>div>
+                <div className="mt-3 text-sm font-medium">{t.photoJa}</div>
+                <div className="text-xs">{t.photoEn}</div>
+          </div>
         );
 }
 
@@ -447,10 +447,10 @@ function SectionTitle({ ja, en, color = "bg-[#D7A18B]" }: { ja: string; en: stri
           <div className="mb-6 flex flex-col items-center text-center">
                 <div className="mb-2 flex items-center gap-3">
                         <span className={cn("h-7 w-1.5 rounded-full", color)} />
-                        <h2 className="text-2xl font-semibold tracking-[0.08em] text-stone-800">{ja}</h2>h2>
-                </div>div>
-                <p className="text-sm text-stone-500">{en}</p>p>
-          </div>div>
+                        <h2 className="text-2xl font-semibold tracking-[0.08em] text-stone-800">{ja}</h2>
+                </div>
+                <p className="text-sm text-stone-500">{en}</p>
+          </div>
         );
 }
 
@@ -461,31 +461,31 @@ function Header({ t }: { t: Record<string, string> }) {
                         <a href="#top" className="flex items-center gap-3" aria-label="WELCOME Reuse Market Home">
                                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#C8B49B] bg-white text-[#54805D]">
                                               <Home size={25} strokeWidth={1.6} />
-                                  </div>div>
+                                  </div>
                                   <div>
                                               <div className="text-xl font-semibold tracking-tight sm:text-2xl">
-                                                            <span className="text-[#C86F58]">WELCOME</span>span> Reuse Market
-                                              </div>div>
+                                                            <span className="text-[#C86F58]">WELCOME</span> Reuse Market
+                                              </div>
                                               <div className="hidden text-xs tracking-wide text-stone-500 sm:block">
                                                 {t.subtitle}
-                                              </div>div>
-                                  </div>div>
-                        </a>a>
+                                              </div>
+                                  </div>
+                        </a>
                 
                         <nav className="hidden items-center gap-7 text-xs text-stone-700 lg:flex" aria-label="Main navigation">
-                                  <a href="#top" className="flex flex-col items-center gap-1 text-[#C86F58]"><Home size={18} />{t.navHome}</a>a>
-                                  <a href="#categories" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Grid2X2 size={18} />{t.navCategories}</a>a>
-                                  <a href="#new-items" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Sparkles size={18} />{t.navNewItems}</a>a>
-                                  <a href="#how-to-use" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><BookOpen size={18} />{t.navHowToUse}</a>a>
-                                  <a href="#contact" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Mail size={18} />{t.navContact}</a>a>
-                        </nav>nav>
+                                  <a href="#top" className="flex flex-col items-center gap-1 text-[#C86F58]"><Home size={18} />{t.navHome}</a>
+                                  <a href="#categories" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Grid2X2 size={18} />{t.navCategories}</a>
+                                  <a href="#new-items" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Sparkles size={18} />{t.navNewItems}</a>
+                                  <a href="#how-to-use" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><BookOpen size={18} />{t.navHowToUse}</a>
+                                  <a href="#contact" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Mail size={18} />{t.navContact}</a>
+                        </nav>
                 
                         <div className="hidden items-center gap-3 md:flex">
                                   <label className="flex items-center gap-2 rounded-full border border-[#E2D5C6] bg-white px-4 py-2 text-xs text-stone-400">
-                                              <span className="sr-only">{t.search}</span>span>
+                                              <span className="sr-only">{t.search}</span>
                                               <input className="w-24 bg-transparent outline-none placeholder:text-stone-400" placeholder={t.search} />
                                               <Search size={15} />
-                                  </label>label>
+                                  </label>
                                   <a
                                                 href={LINE_URL}
                                                 target="_blank"
@@ -493,14 +493,14 @@ function Header({ t }: { t: Record<string, string> }) {
                                                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#4E9D5C] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#438B50]"
                                               >
                                               <MessageCircle size={16} /> {t.line}
-                                  </a>a>
-                        </div>div>
+                                  </a>
+                        </div>
                 
                         <button className="inline-flex rounded-full border border-[#E2D5C6] bg-white p-2 text-stone-700 lg:hidden" aria-label="Open menu">
                                   <Menu size={22} />
-                        </button>button>
-                </div>div>
-          </header>header>
+                        </Button>
+                </div>
+          </header>
         );
 }
 
@@ -528,8 +528,8 @@ function Hero({
                                                 className="flex items-center gap-2 rounded-full border border-[#E8DDD1] bg-white px-4 py-2 text-sm font-medium text-[#C86F58] shadow-sm transition hover:-translate-y-0.5 hover:border-[#C86F58] hover:shadow-md"
                                               >
                                               <Globe size={20} strokeWidth={1.7} />
-                                              <span className="text-xl">{currentOption.flag}</span>span>
-                                  </button>button>
+                                              <span className="text-xl">{currentOption.flag}</span>
+                                  </Button>
                           {isLanguageOpen ? (
                         <div className="absolute left-0 top-14 z-30 w-56 overflow-hidden rounded-2xl border border-[#E8DDD1] bg-white py-2 shadow-xl">
                           {languageOptions.map((language) => (
@@ -545,29 +545,29 @@ function Hero({
                                                                                     setIsLanguageOpen(false);
                                                               }}
                                                             >
-                                                            <span className="text-xl">{language.flag}</span>span>
-                                                            <span>{language.label}</span>span>
-                                          </button>button>
+                                                            <span className="text-xl">{language.flag}</span>
+                                                            <span>{language.label}</span>
+                                          </Button>
                                         ))}
-                        </div>div>
+                        </div>
                       ) : null}
-                        </div>div>
+                        </div>
                         <h1 className="text-4xl font-semibold leading-[1.35] tracking-[0.04em] text-stone-900 md:text-5xl">
                           {t.heroTitle}
-                        </h1>h1>
-                        <p className="mt-4 text-xl font-medium tracking-wide text-[#C86F58]">{t.heroLead}</p>p>
-                        <p className="mt-2 text-sm leading-6 text-stone-500">{t.heroSub}</p>p>
+                        </h1>
+                        <p className="mt-4 text-xl font-medium tracking-wide text-[#C86F58]">{t.heroLead}</p>
+                        <p className="mt-2 text-sm leading-6 text-stone-500">{t.heroSub}</p>
                         <div className="mt-8 flex flex-wrap gap-4">
                                   <a href="#new-items" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C86F58] px-7 py-4 text-sm font-medium text-white transition hover:bg-[#B8614D]">
                                               <ShoppingBag size={18} /> {t.viewItems}
-                                  </a>a>
+                                  </a>
                                   <a href="#how-to-use" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#C8B49B] bg-white px-7 py-4 text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3]">
                                               <BookOpen size={18} /> {t.howFlow}
-                                  </a>a>
-                        </div>div>
-                </div>div>
+                                  </a>
+                        </div>
+                </div>
                 <PhotoPlaceholder large t={t} />
-          </section>section>
+          </section>
         );
 }
 
@@ -582,17 +582,17 @@ function CategorySection({ language, t }: { language: LanguageCode; t: Record<st
                                     <Card key={category.name} className={cn("rounded-[1.4rem]", category.tone)}>
                                                   <CardContent className="flex min-h-44 flex-col items-center justify-center p-5 text-center">
                                                                   <Icon size={42} strokeWidth={1.35} className="mb-4 text-stone-700" />
-                                                                  <div className="font-semibold tracking-wide">{categoryNames[language][category.name]}</div>div>
-                                                                  <div className="text-sm text-stone-600">{category.name}</div>div>
+                                                                  <div className="font-semibold tracking-wide">{categoryNames[language][category.name]}</div>
+                                                                  <div className="text-sm text-stone-600">{category.name}</div>
                                                                   <div className="mt-5 w-full border-t border-white/70 pt-3 text-xs text-stone-500">
                                                                     {category.count} items
-                                                                  </div>div>
-                                                  </CardContent>CardContent>
-                                    </Card>Card>
+                                                                  </div>
+                                                  </CardContent>
+                                    </Card>
                                   );
           })}
-                </div>div>
-          </section>section>
+                </div>
+          </section>
         );
 }
 
@@ -624,22 +624,22 @@ function ProductCard({
                                     {product.badge ? (
                                         <span className="absolute left-2 top-2 z-10 rounded-md bg-[#C86F58] px-2 py-1 text-xs text-white">
                                           {localizedProduct.badge ?? product.badge}
-                                        </span>span>
+                                        </span>
                                       ) : null}
                                               <PhotoPlaceholder t={t} />
-                                  </div>div>
+                                  </div>
                                   <div className="mt-4">
-                                              <div className="font-semibold tracking-wide">{localizedProduct.name}</div>div>
-                                              <div className="text-xs text-stone-500">{product.name}</div>div>
-                                              <div className="mt-2 text-2xl font-semibold text-[#C86F58]">{product.price}</div>div>
+                                              <div className="font-semibold tracking-wide">{localizedProduct.name}</div>
+                                              <div className="text-xs text-stone-500">{product.name}</div>
+                                              <div className="mt-2 text-2xl font-semibold text-[#C86F58]">{product.price}</div>
                                               <div className={cn("mt-3 rounded-xl px-3 py-2 text-center text-xs font-medium", product.tone)}>
-                                                            <div>{localizedProduct.status}</div>div>
-                                                            <div className="text-[11px] opacity-80">{product.status}</div>div>
-                                              </div>div>
-                                  </div>div>
-                        </CardContent>CardContent>
-                </Card>Card>
-          </button>button>
+                                                            <div>{localizedProduct.status}</div>
+                                                            <div className="text-[11px] opacity-80">{product.status}</div>
+                                              </div>
+                                  </div>
+                        </CardContent>
+                </Card>
+          </Button>
         );
 }
 
@@ -659,11 +659,11 @@ function NewItemsSection({
                 <div className="mb-6 flex items-center justify-between">
                         <div className="mx-auto md:mx-0">
                                   <SectionTitle ja={t.newItemsJa} en={t.newItemsEn} />
-                        </div>div>
+                        </div>
                         <Button variant="outline" className="hidden px-5 py-2.5 text-stone-600 md:inline-flex">
                           {t.viewAll}
-                        </Button>Button>
-                </div>div>
+                        </Button>
+                </div>
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
                   {products.map((product) => (
                       <ProductCard
@@ -675,8 +675,8 @@ function NewItemsSection({
                                     t={t}
                                   />
                     ))}
-                </div>div>
-          </section>section>
+                </div>
+          </section>
         );
 }
 
@@ -687,54 +687,54 @@ function FeaturedProduct({ selected, language, t }: { selected: Product; languag
           <section className="mt-10 grid gap-8 rounded-[1.7rem] border border-[#E8DDD1] bg-white p-5 shadow-sm lg:grid-cols-[0.95fr_1.55fr] lg:p-7">
                 <div className="relative">
                         <div className="absolute left-0 top-0 z-10 rounded-br-2xl rounded-tl-[1.4rem] bg-[#D69A4E] px-4 py-3 text-sm font-medium text-white">
-                          {t.popular}<br /><span className="text-xs opacity-90">{t.popularEn}</span>span>
-                        </div>div>
+                          {t.popular}<br /><span className="text-xs opacity-90">{t.popularEn}</span>
+                        </div>
                         <PhotoPlaceholder large t={t} />
-                </div>div>
+                </div>
           
                 <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
                         <div className="flex flex-col justify-center">
                                   <div className="mb-3 flex items-center gap-2 text-[#54805D]">
                                               <span className="h-6 w-1 rounded-full bg-[#9EB99A]" />
                                               <div>
-                                                            <div className="text-xl font-semibold tracking-wide">{t.featuredJa}</div>div>
-                                                            <div className="text-xs text-stone-500">{t.featuredEn}</div>div>
-                                              </div>div>
-                                  </div>div>
-                                  <h3 className="text-3xl font-semibold tracking-wide">{localizedProduct.name}</h3>h3>
-                                  <p className="text-stone-500">{selected.name}</p>p>
-                                  <div className="mt-4 text-4xl font-semibold text-[#C86F58]">{selected.price}</div>div>
+                                                            <div className="text-xl font-semibold tracking-wide">{t.featuredJa}</div>
+                                                            <div className="text-xs text-stone-500">{t.featuredEn}</div>
+                                              </div>
+                                  </div>
+                                  <h3 className="text-3xl font-semibold tracking-wide">{localizedProduct.name}</h3>
+                                  <p className="text-stone-500">{selected.name}</p>
+                                  <div className="mt-4 text-4xl font-semibold text-[#C86F58]">{selected.price}</div>
                                   <div className="mt-5 space-y-3 text-sm">
                                               <div className="rounded-xl bg-[#EDF4EC] px-4 py-3 text-[#58715A]">
                                                             <CheckCircle2 className="mr-2 inline" size={17} />
                                                 {localizedProduct.status}
                                                             <br />
-                                                            <span className="ml-6 text-xs">{selected.status}</span>span>
-                                              </div>div>
+                                                            <span className="ml-6 text-xs">{selected.status}</span>
+                                              </div>
                                               <div className="rounded-xl bg-[#E9F2F7] px-4 py-3 text-[#466B82]">
                                                             <Truck className="mr-2 inline" size={17} />
                                                 {t.delivery}
                                                             <br />
-                                                            <span className="ml-6 text-xs">{t.deliveryEn}</span>span>
-                                              </div>div>
-                                  </div>div>
-                        </div>div>
+                                                            <span className="ml-6 text-xs">{t.deliveryEn}</span>
+                                              </div>
+                                  </div>
+                        </div>
                 
                         <div className="flex flex-col justify-center">
                                   <p className="text-sm leading-7 text-stone-700">
                                     {t.productNote}
-                                  </p>p>
+                                  </p>
                                   <div className="mt-5 flex flex-wrap gap-2 text-xs">
                                               <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
                                                             <ShieldCheck size={14} /> {t.checked}
-                                              </span>span>
+                                              </span>
                                               <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
                                                             <CheckCircle2 size={14} /> {t.cleaned}
-                                              </span>span>
+                                              </span>
                                               <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
                                                             <Heart size={14} /> {t.womenSupport}
-                                              </span>span>
-                                  </div>div>
+                                              </span>
+                                  </div>
                                   <a
                                                 href={LINE_URL}
                                                 target="_blank"
@@ -742,10 +742,10 @@ function FeaturedProduct({ selected, language, t }: { selected: Product; languag
                                                 className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#4E9D5C] px-5 py-4 text-sm font-medium text-white transition hover:bg-[#438B50]"
                                               >
                                               <MessageCircle size={18} /> {t.askLine}
-                                  </a>a>
-                        </div>div>
-                </div>div>
-          </section>section>
+                                  </a>
+                        </div>
+                </div>
+          </section>
         );
 }
 
@@ -761,15 +761,15 @@ function HowToUseSection({ language, t }: { language: LanguageCode; t: Record<st
                                     <div key={step.ja} className="rounded-[1.25rem] border border-[#E8DDD1] bg-white p-5 text-center shadow-sm">
                                                   <div className={cn("mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold text-white", step.tone)}>
                                                     {String(index + 1).padStart(2, "0")}
-                                                  </div>div>
+                                                  </div>
                                                   <Icon className="mx-auto mb-3 text-stone-700" size={28} strokeWidth={1.4} />
-                                                  <div className="text-sm font-semibold">{label.label}</div>div>
-                                                  <div className="mt-1 text-xs text-stone-500">{label.sub}</div>div>
-                                    </div>div>
+                                                  <div className="text-sm font-semibold">{label.label}</div>
+                                                  <div className="mt-1 text-xs text-stone-500">{label.sub}</div>
+                                    </div>
                                   );
           })}
-                </div>div>
-          </section>section>
+                </div>
+          </section>
         );
 }
 
@@ -778,26 +778,26 @@ function Footer({ t }: { t: Record<string, string> }) {
           <footer id="contact" className="mt-14 border-t border-[#E8DDD1] bg-[#F4EEE5]">
                 <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
                         <div>
-                                  <div className="text-xl font-semibold"><span className="text-[#C86F58]">WELCOME</span>span> Reuse Market</div>div>
-                                  <p className="mt-2 text-sm text-stone-600">{t.footerLead}</p>p>
-                                  <p className="mt-1 text-xs text-stone-500">{t.footerSub}</p>p>
-                        </div>div>
+                                  <div className="text-xl font-semibold"><span className="text-[#C86F58]">WELCOME</span> Reuse Market</div>
+                                  <p className="mt-2 text-sm text-stone-600">{t.footerLead}</p>
+                                  <p className="mt-1 text-xs text-stone-500">{t.footerSub}</p>
+                        </div>
                         <div className="space-y-1 text-sm text-stone-600">
-                                  <div className="mb-2 font-semibold text-stone-800">{t.quickLinks}</div>div>
-                                  <p>{t.navHome}</p>p>
-                                  <p>{t.navCategories}</p>p>
-                                  <p>{t.navNewItems}</p>p>
-                                  <p>{t.navHowToUse}</p>p>
-                        </div>div>
+                                  <div className="mb-2 font-semibold text-stone-800">{t.quickLinks}</div>
+                                  <p>{t.navHome}</p>
+                                  <p>{t.navCategories}</p>
+                                  <p>{t.navNewItems}</p>
+                                  <p>{t.navHowToUse}</p>
+                        </div>
                         <div className="space-y-1 text-sm text-stone-600">
-                                  <div className="mb-2 font-semibold text-stone-800">{t.support}</div>div>
-                                  <p>{t.faq}</p>p>
-                                  <p>{t.deliveryFooter}</p>p>
-                                  <p>{t.payment}</p>p>
-                                  <p>{t.legal}</p>p>
-                        </div>div>
+                                  <div className="mb-2 font-semibold text-stone-800">{t.support}</div>
+                                  <p>{t.faq}</p>
+                                  <p>{t.deliveryFooter}</p>
+                                  <p>{t.payment}</p>
+                                  <p>{t.legal}</p>
+                        </div>
                         <div>
-                                  <div className="mb-3 font-semibold text-stone-800">{t.contactUs}</div>div>
+                                  <div className="mb-3 font-semibold text-stone-800">{t.contactUs}</div>
                                   <a
                                                 href={LINE_URL}
                                                 target="_blank"
@@ -805,19 +805,19 @@ function Footer({ t }: { t: Record<string, string> }) {
                                                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#4E9D5C] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#438B50]"
                                               >
                                               <MessageCircle size={16} /> {t.line}
-                                  </a>a>
+                                  </a>
                                   <a
                                                 href="mailto:info@example.com"
                                                 className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#C8B49B] bg-white px-4 py-2.5 text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3]"
                                               >
                                               <Mail size={16} /> {t.contactMail}
-                                  </a>a>
-                        </div>div>
-                </div>div>
+                                  </a>
+                        </div>
+                </div>
                 <div className="border-t border-[#E8DDD1] py-4 text-center text-xs text-stone-500">
                         \u00A9 2025 WELCOME Reuse Market. All rights reserved.
-                </div>div>
-          </footer>footer>
+                </div>
+          </footer>
         );
 }
 
@@ -844,9 +844,9 @@ export default function App() {
                                   />
                         <FeaturedProduct selected={selectedProduct} language={language} t={t} />
                         <HowToUseSection language={language} t={t} />
-                </main>main>
+                </main>
                 <Footer t={t} />
-          </div>div>
+          </div>
         );
 }
 </div>
