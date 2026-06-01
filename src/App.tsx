@@ -638,7 +638,7 @@ function Hero({
                                                                                   )] }
                                                                 )] }
                                                 ), /*#__PURE__*/
-                        _jsx(PhotoPlaceholder, { large: true, t: t })] }
+                        _jsx("div", { className: "relative h-full min-h-[300px] overflow-hidden rounded-[1.4rem] bg-[#EEE8E0] shadow-inner", children: /*#__PURE__*/_jsx("img", { src: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80", alt: "Second-hand furniture and home goods", className: "h-full min-h-[300px] w-full object-cover" }) })] }
                       ));
 
 }
