@@ -874,10 +874,10 @@ function Footer({ t }) {
                                                                              ), /*#__PURE__*/
                                                        _jsxs("div", { className: "space-y-1 text-sm text-stone-600", children: [/*#__PURE__*/
                                                                                _jsx("div", { className: "mb-2 font-semibold text-stone-800", children: t.quickLinks }), /*#__PURE__*/
-                                                                       _jsx("p", { children: t.navHome }), /*#__PURE__*/
-                                                                       _jsx("p", { children: t.navCategories }), /*#__PURE__*/
-                                                                       _jsx("p", { children: t.navNewItems }), /*#__PURE__*/
-                                                                       _jsx("p", { children: t.navHowToUse })] }
+                                                                       _jsx("a", { href: "#top", className: "block hover:text-[#C86F58]", children: t.navHome }), /*#__PURE__*/
+                                                                       _jsx("a", { href: "#categories", className: "block hover:text-[#C86F58]", children: t.navCategories }), /*#__PURE__*/
+                                                                       _jsx("a", { href: "#new-items", className: "block hover:text-[#C86F58]", children: t.navNewItems }), /*#__PURE__*/
+                                                                       _jsx("a", { href: "#how-to-use", className: "block hover:text-[#C86F58]", children: t.navHowToUse })] }
                                                                      ), /*#__PURE__*/
                                                        _jsxs("div", { className: "space-y-1 text-sm text-stone-600", children: [/*#__PURE__*/
                                                                                _jsx("div", { className: "mb-2 font-semibold text-stone-800", children: t.support }), /*#__PURE__*/
