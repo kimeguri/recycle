@@ -2,509 +2,851 @@ import { useMemo, useState } from "react";
 import type { ButtonHTMLAttributes, HTMLAttributes, ComponentType } from "react";
 import type { LucideProps } from "lucide-react";
 import {
-  Search,
-  Home,
-  Grid2X2, Globe,
-  Sparkles,
-  BookOpen,
-  Mail,
-  MessageCircle,
-  ShoppingBag,
-  Image as ImageIcon,
-  Sofa,
-  Refrigerator,
-  Package,
-  CookingPot,
-  Bed,
-  Armchair,
-  CheckCircle2,
-  Truck,
-  ShieldCheck,
-  CalendarCheck,
-  Handshake,
-  Heart,
-  Menu,
+    Search,
+    Home,
+    Grid2X2,
+    Globe,
+    Sparkles,
+    BookOpen,
+    Mail,
+    MessageCircle,
+    ShoppingBag,
+    Image as ImageIcon,
+    Sofa,
+    Refrigerator,
+    Package,
+    CookingPot,
+    Bed,
+    Armchair,
+    CheckCircle2,
+    Truck,
+    ShieldCheck,
+    CalendarCheck,
+    Handshake,
+    Heart,
+    Menu,
 } from "lucide-react";
 
 const LINE_URL = "https://lin.ee/Pw6OOlu";
 
 type IconComponent = ComponentType<LucideProps>;
+type LanguageCode = "vi" | "si" | "ne" | "id";
+
+const languageOptions: Array<{ code: LanguageCode; label: string; flag: string }> = [
+  { code: "vi", label: "Ti\u1EBFng Vi\u1EC7t", flag: "\u{1F1FB}\u{1F1F3}" },
+  { code: "si", label: "\u0DC3\u0DD2\u0D82\u0DC4\u0DBD", flag: "\u{1F1F1}\u{1F1F0}" },
+  { code: "ne", label: "\u0928\u0947\u092A\u093E\u0932\u0940", flag: "\u{1F1F3}\u{1F1F5}" },
+  { code: "id", label: "Bahasa Indonesia", flag: "\u{1F1EE}\u{1F1E9}" },
+  ];
+
+const translations = {
+    vi: {
+          subtitle: "\u0110\u1ED3 c\u0169 cho cu\u1ED9c s\u1ED1ng m\u1EDBi c\u1EE7a b\u1EA1n t\u1EA1i Nh\u1EADt B\u1EA3n.",
+          navHome: "Trang ch\u1EE7",
+          navCategories: "Danh m\u1EE5c",
+          navNewItems: "H\u00E0ng m\u1EDBi",
+          navHowToUse: "C\u00E1ch d\u00F9ng",
+          navContact: "Li\u00EAn h\u1EC7",
+          search: "T\u00ECm s\u1EA3n ph\u1EA9m",
+          line: "T\u01B0 v\u1EA5n qua LINE",
+          photoJa: "Th\u00EAm \u1EA3nh",
+          photoEn: "Add your photo",
+          heroTitle: "Kh\u00E1m ph\u00E1 nh\u1EEFng m\u00F3n \u0111\u1ED3 \u0111\u1ED9c \u0111\u00E1o cho ng\u00F4i nh\u00E0 c\u1EE7a b\u1EA1n",
+          heroLead: "Ch\u1EE3 \u0111\u1ED3 t\u00E1i s\u1EED d\u1EE5ng giao n\u1ED9i th\u1EA5t, \u0111\u1ED3 \u0111i\u1EC7n v\u00E0 \u0111\u1ED3 d\u00F9ng h\u1EB1ng ng\u00E0y v\u1EDBi gi\u00E1 d\u1EC5 mua.",
+          heroSub: "Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.",
+          viewItems: "Xem s\u1EA3n ph\u1EA9m",
+          howFlow: "C\u00E1ch s\u1EED d\u1EE5ng",
+          categoriesJa: "T\u00ECm theo danh m\u1EE5c",
+          categoriesEn: "Browse by category",
+          newItemsJa: "S\u1EA3n ph\u1EA9m m\u1EDBi",
+          newItemsEn: "New Items",
+          viewAll: "Xem t\u1EA5t c\u1EA3",
+          featuredJa: "S\u1EA3n ph\u1EA9m g\u1EE3i \u00FD",
+          featuredEn: "Featured Item",
+          popular: "S\u1EA3n ph\u1EA9m n\u1ED5i b\u1EADt",
+          popularEn: "Popular",
+          delivery: "C\u00F3 th\u1EC3 nh\u1EADn h\u00E0ng ho\u1EB7c giao h\u00E0ng",
+          deliveryEn: "Pickup / Delivery available",
+          productNote: "\u0110\u00E2y l\u00E0 h\u00E0ng \u0111\u00E3 qua s\u1EED d\u1EE5ng. C\u00F3 th\u1EC3 c\u00F3 v\u1EBFt x\u01B0\u1EDBc nh\u1ECF ho\u1EB7c d\u1EA5u hi\u1EC7u s\u1EED d\u1EE5ng, nh\u01B0ng v\u1EABn d\u00F9ng t\u1ED1t. Ph\u00F9 h\u1EE3p cho ng\u01B0\u1EDDi m\u1EDBi b\u1EAFt \u0111\u1EA7u s\u1ED1ng t\u1EA1i Nh\u1EADt.",
+          checked: "\u0110\u00E3 ki\u1EC3m tra ho\u1EA1t \u0111\u1ED9ng",
+          cleaned: "\u0110\u00E3 v\u1EC7 sinh",
+          womenSupport: "C\u00F3 h\u1ED7 tr\u1EE3 n\u1EEF",
+          askLine: "H\u1ECFi v\u1EC1 s\u1EA3n ph\u1EA9m n\u00E0y qua LINE",
+          footerLead: "B\u1EAFt \u0111\u1EA7u cu\u1ED9c s\u1ED1ng m\u1EDBi t\u1EA1i Nh\u1EADt m\u1ED9t c\u00E1ch nh\u1EB9 nh\u00E0ng v\u00E0 vui h\u01A1n.",
+          footerSub: "A gentle start to your new life in Japan.",
+          quickLinks: "Li\u00EAn k\u1EBFt nhanh",
+          support: "H\u1ED7 tr\u1EE3",
+          faq: "FAQ",
+          deliveryFooter: "Giao h\u00E0ng / nh\u1EADn h\u00E0ng",
+          payment: "Ph\u01B0\u01A1ng th\u1EE9c thanh to\u00E1n",
+          legal: "\u0110i\u1EC1u kho\u1EA3n",
+          contactUs: "T\u01B0 v\u1EA5n t\u1EA1i \u0111\u00E2y",
+          contactMail: "Li\u00EAn h\u1EC7",
+    },
+    si: {
+          subtitle: "\u0DA2\u0DB4\u0DCF\u0DB1\u0DBA\u0DDA \u0D94\u0DB6\u0DDA \u0DB1\u0DC0 \u0DA2\u0DD3\u0DC0\u0DD2\u0DAD\u0DBA\u0DA7 \u0DAF\u0DD9\u0DC0\u0DD0\u0DB1\u0DD2 \u0D85\u0DAD\u0DCA \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9.",
+          navHome: "\u0DB8\u0DD4\u0DBD\u0DCA \u0DB4\u0DD2\u0DA7\u0DD4\u0DC0",
+          navCategories: "\u0D9A\u0DCF\u0DAB\u0DCA\u0DA9",
+          navNewItems: "\u0DB1\u0DC0 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9",
+          navHowToUse: "\u0DB7\u0DCF\u0DC0\u0DD2\u0DAD\u0DCF \u0D9A\u0DBB\u0DB1 \u0D86\u0D9A\u0DCF\u0DBB\u0DBA",
+          navContact: "\u0DC3\u0DB8\u0DCA\u0DB6\u0DB1\u0DCA\u0DB0 \u0DC0\u0DB1\u0DCA\u0DB1",
+          search: "\u0DB7\u0DCF\u0DAB\u0DCA\u0DA9 \u0DC3\u0DDC\u0DBA\u0DB1\u0DCA\u0DB1",
+          line: "LINE \u0DB8\u0D9C\u0DD2\u0DB1\u0DCA \u0DC0\u0DD2\u0DB8\u0DC3\u0DB1\u0DCA\u0DB1",
+          photoJa: "\u0DA1\u0DCF\u0DBA\u0DCF\u0DBB\u0DD6\u0DB4\u0DBA\u0D9A\u0DCA \u0D91\u0D9A\u0DCA \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1",
+          photoEn: "Add your photo",
+          heroTitle: "\u0D94\u0DB6\u0DDA \u0DB1\u0DD2\u0DC0\u0DC3\u0DA7 \u0DC0\u0DD2\u0DC1\u0DDA\u0DC2 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9 \u0DC3\u0DDC\u0DBA\u0DCF\u0D9C\u0DB1\u0DCA\u0DB1",
+          heroLead: "\u0D9C\u0DD8\u0DC4 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9, \u0DC0\u0DD2\u0DAF\u0DD4\u0DBD\u0DD2 \u0D8B\u0DB4\u0D9A\u0DBB\u0DAB \u0DC3\u0DC4 \u0DAF\u0DDB\u0DB1\u0DD2\u0D9A \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9 \u0DB4\u0DC4\u0DC3\u0DD4 \u0DB8\u0DD2\u0DBD\u0DA7 \u0DBD\u0DB6\u0DCF\u0DAF\u0DD9\u0DB1 \u0DBB\u0DD3\u0DBA\u0DD6\u0DC3\u0DCA \u0DB8\u0DCF\u0DBB\u0DCA\u0D9A\u0DA7\u0DCA \u0D91\u0D9A\u0D9A\u0DD2.",
+          heroSub: "Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.",
+          viewItems: "\u0DB7\u0DCF\u0DAB\u0DCA\u0DA9 \u0DB6\u0DBD\u0DB1\u0DCA\u0DB1",
+          howFlow: "\u0DB7\u0DCF\u0DC0\u0DD2\u0DAD\u0DCF \u0D9A\u0DBB\u0DB1 \u0D86\u0D9A\u0DCF\u0DBB\u0DBA",
+          categoriesJa: "\u0D9A\u0DCF\u0DAB\u0DCA\u0DA9 \u0D85\u0DB1\u0DD4\u0DC0 \u0DC3\u0DDC\u0DBA\u0DB1\u0DCA\u0DB1",
+          categoriesEn: "Browse by category",
+          newItemsJa: "\u0DB1\u0DC0 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9",
+          newItemsEn: "New Items",
+          viewAll: "\u0DC3\u0DD2\u0DBA\u0DBD\u0DCA\u0DBD \u0DB6\u0DBD\u0DB1\u0DCA\u0DB1",
+          featuredJa: "\u0DB1\u0DD2\u0DBB\u0DCA\u0DAF\u0DDA\u0DC1\u0DD2\u0DAD \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9\u0DBA",
+          featuredEn: "Featured Item",
+          popular: "\u0DA2\u0DB1\u0DB4\u0DCA\u200D\u0DBB\u0DD2\u0DBA \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9\u0DBA",
+          popularEn: "Popular",
+          delivery: "\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8 / \u0DB6\u0DD9\u0DAF\u0DCF\u0DC4\u0DD0\u0DBB\u0DD3\u0DB8 \u0DC4\u0DD0\u0D9A",
+          deliveryEn: "Pickup / Delivery available",
+          productNote: "\u0DB8\u0DD9\u0DBA \u0DB7\u0DCF\u0DC0\u0DD2\u0DAD\u0DCF \u0D9A\u0DC5 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9\u0DBA\u0D9A\u0DD2. \u0D9A\u0DD4\u0DA9\u0DCF \u0DC3\u0DD3\u0DBB\u0DD3\u0DB8\u0DCA \u0DC4\u0DDD \u0DB7\u0DCF\u0DC0\u0DD2\u0DAD \u0DBD\u0D9A\u0DD4\u0DAB\u0DD4 \u0DAD\u0DD2\u0DB6\u0DD2\u0DBA \u0DC4\u0DD0\u0D9A\u0DD2 \u0DB1\u0DB8\u0DD4\u0DAD\u0DCA \u0DB7\u0DCF\u0DC0\u0DD2\u0DAD\u0DBA\u0DA7 \u0D9C\u0DD0\u0DA7\u0DBD\u0DD4\u0DC0\u0D9A\u0DCA \u0DB1\u0DD0\u0DAD. \u0DA2\u0DB4\u0DCF\u0DB1\u0DBA\u0DDA \u0DA2\u0DD3\u0DC0\u0DD2\u0DAD\u0DBA \u0D86\u0DBB\u0DB8\u0DCA\u0DB7 \u0D9A\u0DBB\u0DB1 \u0D85\u0DBA\u0DA7 \u0DC3\u0DD4\u0DAF\u0DD4\u0DC3\u0DD4\u0DBA.",
+          checked: "\u0D9A\u0DCA\u200D\u0DBB\u0DD2\u0DBA\u0DCF\u0D9A\u0DCF\u0DBB\u0DD2\u0DAD\u0DCA\u0DC0\u0DBA \u0DB4\u0DBB\u0DD3\u0D9A\u0DCA\u0DC2\u0DCF \u0D9A\u0DBB \u0D87\u0DAD",
+          cleaned: "\u0DB4\u0DD2\u0DBB\u0DD2\u0DC3\u0DD2\u0DAF\u0DD4 \u0D9A\u0DBB \u0D87\u0DAD",
+          womenSupport: "\u0D9A\u0DCF\u0DB1\u0DCA\u0DAD\u0DCF \u0DC3\u0DC4\u0DCF\u0DBA \u0D87\u0DAD",
+          askLine: "\u0DB8\u0DD9\u0DB8 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9\u0DBA \u0D9C\u0DD0\u0DB1 LINE \u0DB8\u0D9C\u0DD2\u0DB1\u0DCA \u0DC0\u0DD2\u0DB8\u0DC3\u0DB1\u0DCA\u0DB1",
+          footerLead: "\u0DA2\u0DB4\u0DCF\u0DB1\u0DBA\u0DDA \u0DB1\u0DC0 \u0DA2\u0DD3\u0DC0\u0DD2\u0DAD\u0DBA \u0DC3\u0DD0\u0DC4\u0DD0\u0DBD\u0DCA\u0DBD\u0DD4\u0DC0\u0DD9\u0DB1\u0DCA \u0DC4\u0DCF \u0DC3\u0DAD\u0DD4\u0DA7\u0DD2\u0DB1\u0DCA \u0D86\u0DBB\u0DB8\u0DCA\u0DB7 \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1.",
+          footerSub: "A gentle start to your new life in Japan.",
+          quickLinks: "\u0D89\u0D9A\u0DCA\u0DB8\u0DB1\u0DCA \u0DC3\u0DB6\u0DD0\u0DB3\u0DD2",
+          support: "\u0DC3\u0DC4\u0DCF\u0DBA",
+          faq: "FAQ",
+          deliveryFooter: "\u0DB6\u0DD9\u0DAF\u0DCF\u0DC4\u0DD0\u0DBB\u0DD3\u0DB8 / \u0D9C\u0DD0\u0DB1\u0DD3\u0DB8",
+          payment: "\u0D9C\u0DD9\u0DC0\u0DD3\u0DB8\u0DCA \u0D9A\u0DCA\u200D\u0DBB\u0DB8",
+          legal: "\u0DB1\u0DD3\u0DAD\u0DD2 \u0DAD\u0DDC\u0DBB\u0DAD\u0DD4\u0DBB\u0DD4",
+          contactUs: "\u0DC0\u0DD2\u0DB8\u0DC3\u0DB1\u0DCA\u0DB1",
+          contactMail: "\u0DC3\u0DB8\u0DCA\u0DB6\u0DB1\u0DCA\u0DB0 \u0DC0\u0DB1\u0DCA\u0DB1",
+    },
+    ne: {
+          subtitle: "\u091C\u093E\u092A\u093E\u0928\u092E\u093E \u0924\u092A\u093E\u0908\u0902\u0915\u094B \u0928\u092F\u093E\u0901 \u091C\u0940\u0935\u0928\u0915\u093E \u0932\u093E\u0917\u093F \u0938\u0947\u0915\u0947\u0928\u094D\u0921-\u0939\u094D\u092F\u093E\u0928\u094D\u0921 \u0938\u093E\u092E\u093E\u0928\u0939\u0930\u0942\u0964",
+          navHome: "\u0939\u094B\u092E",
+          navCategories: "\u0935\u0930\u094D\u0917\u0939\u0930\u0942",
+          navNewItems: "\u0928\u092F\u093E\u0901 \u0938\u093E\u092E\u093E\u0928",
+          navHowToUse: "\u0915\u0938\u0930\u0940 \u092A\u094D\u0930\u092F\u094B\u0917 \u0917\u0930\u094D\u0928\u0947",
+          navContact: "\u0938\u092E\u094D\u092A\u0930\u094D\u0915",
+          search: "\u0938\u093E\u092E\u093E\u0928 \u0916\u094B\u091C\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          line: "LINE \u092E\u093E \u0938\u094B\u0927\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          photoJa: "\u092B\u094B\u091F\u094B \u0925\u092A\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          photoEn: "Add your photo",
+          heroTitle: "\u0924\u092A\u093E\u0908\u0902\u0915\u094B \u0918\u0930\u0915\u093E \u0932\u093E\u0917\u093F \u0935\u093F\u0936\u0947\u0937 \u0938\u093E\u092E\u093E\u0928\u0939\u0930\u0942 \u092D\u0947\u091F\u094D\u091F\u093E\u0909\u0928\u0941\u0939\u094B\u0938\u094D",
+          heroLead: "\u092B\u0930\u094D\u0928\u093F\u091A\u0930, \u0907\u0932\u0947\u0915\u094D\u091F\u094D\u0930\u094B\u0928\u093F\u0915\u094D\u0938 \u0930 \u0926\u0948\u0928\u093F\u0915 \u0938\u093E\u092E\u093E\u0928\u0939\u0930\u0942 \u0938\u091C\u093F\u0932\u094B \u092E\u0942\u0932\u094D\u092F\u092E\u093E \u0909\u092A\u0932\u092C\u094D\u0927 \u0917\u0930\u093E\u0909\u0928\u0947 \u0930\u093F\u092F\u0942\u091C \u092E\u093E\u0930\u094D\u0915\u0947\u091F \u0939\u094B\u0964",
+          heroSub: "Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.",
+          viewItems: "\u0938\u093E\u092E\u093E\u0928 \u0939\u0947\u0930\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          howFlow: "\u092A\u094D\u0930\u092F\u094B\u0917 \u0917\u0930\u094D\u0928\u0947 \u0924\u0930\u093F\u0915\u093E",
+          categoriesJa: "\u0935\u0930\u094D\u0917\u092C\u093E\u091F \u0916\u094B\u091C\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          categoriesEn: "Browse by category",
+          newItemsJa: "\u0928\u092F\u093E\u0901 \u0938\u093E\u092E\u093E\u0928",
+          newItemsEn: "New Items",
+          viewAll: "\u0938\u092C\u0948 \u0939\u0947\u0930\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          featuredJa: "\u0938\u093F\u092B\u093E\u0930\u093F\u0938 \u0917\u0930\u093F\u090F\u0915\u094B \u0938\u093E\u092E\u093E\u0928",
+          featuredEn: "Featured Item",
+          popular: "\u0932\u094B\u0915\u092A\u094D\u0930\u093F\u092F \u0938\u093E\u092E\u093E\u0928",
+          popularEn: "Popular",
+          delivery: "\u092A\u093F\u0915\u0905\u092A / \u0921\u0947\u0932\u093F\u092D\u0930\u0940 \u0909\u092A\u0932\u092C\u094D\u0927",
+          deliveryEn: "Pickup / Delivery available",
+          productNote: "\u092F\u094B \u0938\u0947\u0915\u0947\u0928\u094D\u0921-\u0939\u094D\u092F\u093E\u09293E\u0930\u0947 LINE \u092E\u093E \u0938\u094B\u0927\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          footerLead: "\u091C\u093E\u092A\u093E\u0928\u092E\u093E \u0928\u092F\u093E\u0901 \u091C\u0940\u0935\u0928 \u0938\u091C\u093F\u0932\u094B \u0930 \u0930\u092E\u093E\u0907\u0932\u094B \u0930\u0942\u092A\u092E\u093E \u0938\u0941\u0930\u0941 \u0917\u0930\u094D\u0928\u0941\u0939\u094B\u0938\u094D\u0964",
+          footerSub: "A gentle start to your new life in Japan.",
+          quickLinks: "\u091B\u093F\u091F\u094B \u0932\u093F\u0902\u0915\u0939\u0930\u0942",
+          support: "\u0938\u0939\u092F\u094B\u0917",
+          faq: "FAQ",
+          deliveryFooter: "\u0921\u0947\u0932\u093F\u092D\u0930\u0940 / \u092A\u093F\u0915\u0905\u092A",
+          payment: "\u092D\u0941\u0915\u094D\u0924\u093E\u0928\u0940 \u0935\u093F\u0927\u093F",
+          legal: "\u0928\u093F\u092F\u092E\u0939\u0930\u0942",
+          contactUs: "\u092F\u0939\u093E\u0901 \u0938\u094B\u0927\u094D\u0928\u0941\u0939\u094B\u0938\u094D",
+          contactMail: "\u0938\u092E\u094D\u092A\u0930\u094D\u0915",
+    },
+    id: {
+          subtitle: "Barang bekas untuk memulai hidup baru Anda di Jepang.",
+          navHome: "Beranda",
+          navCategories: "Kategori",
+          navNewItems: "Barang Baru",
+          navHowToUse: "Cara Pakai",
+          navContact: "Kontak",
+          search: "Cari barang",
+          line: "Konsultasi via LINE",
+          photoJa: "Tambah foto",
+          photoEn: "Add your photo",
+          heroTitle: "Temukan barang unik untuk rumah Anda",
+          heroLead: "Reuse market yang menyediakan furnitur, peralatan elektronik, dan barang harian dengan harga ramah.",
+          heroSub: "Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.",
+          viewItems: "Lihat barang",
+          howFlow: "Cara pakai",
+          categoriesJa: "Cari berdasarkan kategori",
+          categoriesEn: "Browse by category",
+          newItemsJa: "Barang baru",
+          newItemsEn: "New Items",
+          viewAll: "Lihat semua",
+          featuredJa: "Barang rekomendasi",
+          featuredEn: "Featured Item",
+          popular: "Barang populer",
+          popularEn: "Popular",
+          delivery: "Bisa ambil sendiri / dikirim",
+          deliveryEn: "Pickup / Delivery available",
+          productNote: "Ini adalah barang bekas. Mungkin ada goresan kecil atau tanda pemakaian, tetapi masih dapat digunakan dengan baik. Cocok untuk orang yang baru mulai tinggal di Jepang.",
+          checked: "Sudah dicek",
+          cleaned: "Sudah dibersihkan",
+          womenSupport: "Dukungan perempuan tersedia",
+          askLine: "Tanya barang ini via LINE",
+          footerLead: "Mulai hidup baru di Jepang dengan mudah dan menyenangkan.",
+          footerSub: "A gentle start to your new life in Japan.",
+          quickLinks: "Tautan cepat",
+          support: "Bantuan",
+          faq: "FAQ",
+          deliveryFooter: "Pengiriman / ambil sendiri",
+          payment: "Metode pembayaran",
+          legal: "Info legal",
+          contactUs: "Konsultasi di sini",
+          contactMail: "Kontak",
+    },
+} satisfies Record<LanguageCode, Record<string, string>>;
 
 type Category = {
-  name: string;
-  ja: string;
-  count: number;
-  icon: IconComponent;
-  tone: string;
+    name: string;
+    ja: string;
+    count: number;
+    icon: IconComponent;
+    tone: string;
 };
 
 type Product = {
-  id: string;
-  name: string;
-  ja: string;
-  price: string;
-  status: string;
-  statusJa: string;
-  badge?: string;
-  tone: string;
+    id: string;
+    name: string;
+    ja: string;
+    price: string;
+    status: string;
+    statusJa: string;
+    badge?: string;
+    tone: string;
 };
 
 const categories: Category[] = [
-  { name: "Furniture", ja: "家具", count: 12, icon: Sofa, tone: "bg-[#F7EFE8]" },
-  { name: "Appliances", ja: "家電", count: 9, icon: Refrigerator, tone: "bg-[#EEF3EF]" },
-  { name: "Daily Goods", ja: "日用品・雑貨", count: 15, icon: Package, tone: "bg-[#F8F2E4]" },
-  { name: "Kitchen", ja: "キッチン用品", count: 11, icon: CookingPot, tone: "bg-[#EEF4F7]" },
-  { name: "Bedding", ja: "寝具", count: 8, icon: Bed, tone: "bg-[#F3F0F6]" },
-  { name: "Starter Sets", ja: "新生活セット", count: 6, icon: Armchair, tone: "bg-[#F7F1E3]" },
-];
+  { name: "Furniture", ja: "\u5BB6\u5177", count: 12, icon: Sofa, tone: "bg-[#F7EFE8]" },
+  { name: "Appliances", ja: "\u5BB6\u96FB", count: 9, icon: Refrigerator, tone: "bg-[#EEF3EF]" },
+  { name: "Daily Goods", ja: "\u65E5\u7528\u54C1\u30FB\u96D1\u8CA8", count: 15, icon: Package, tone: "bg-[#F8F2E4]" },
+  { name: "Kitchen", ja: "\u30AD\u30C3\u30C1\u30F3\u7528\u54C1", count: 11, icon: CookingPot, tone: "bg-[#EEF4F7]" },
+  { name: "Bedding", ja: "\u5BDD\u5177", count: 8, icon: Bed, tone: "bg-[#F3F0F6]" },
+  { name: "Starter Sets", ja: "\u65B0\u751F\u6D3B\u30BB\u30C3\u30C8", count: 6, icon: Armchair, tone: "bg-[#F7F1E3]" },
+  ];
 
 const products: Product[] = [
   {
-    id: "R-001",
-    name: "Refrigerator 120L",
-    ja: "冷蔵庫 120L",
-    price: "¥8,000",
-    status: "Cleaned & Good condition",
-    statusJa: "清掃済み・状態良好",
-    badge: "人気",
-    tone: "bg-[#EDF4EC] text-[#58715A]",
+        id: "R-001",
+        name: "Refrigerator 120L",
+        ja: "\u51B7\u8535\u5EAB 120L",
+        price: "\u00A58,000",
+        status: "Cleaned & Good condition",
+        statusJa: "\u6E05\u6383\u6E08\u307F\u30FB\u72B6\u614B\u826F\u597D",
+        badge: "\u4EBA\u6C17",
+        tone: "bg-[#EDF4EC] text-[#58715A]",
   },
   {
-    id: "F-002",
-    name: "Wooden Dining Chair",
-    ja: "木製ダイニングチェア",
-    price: "¥1,500",
-    status: "Used - Good",
-    statusJa: "良品・美品",
-    badge: "おすすめ",
-    tone: "bg-[#F6ECDD] text-[#8A6640]",
+        id: "F-002",
+        name: "Wooden Dining Chair",
+        ja: "\u6728\u88FD\u30C0\u30A4\u30CB\u30F3\u30B0\u30C1\u30A7\u30A2",
+        price: "\u00A51,500",
+        status: "Used - Good",
+        statusJa: "\u826F\u54C1\u30FB\u7F8E\u54C1",
+        badge: "\u304A\u3059\u3059\u3081",
+        tone: "bg-[#F6ECDD] text-[#8A6640]",
   },
   {
-    id: "K-003",
-    name: "Kitchen Starter Set",
-    ja: "キッチン用品セット",
-    price: "¥2,000",
-    status: "Set item",
-    statusJa: "セット商品",
-    badge: "人気",
-    tone: "bg-[#E9F2F7] text-[#466B82]",
+        id: "K-003",
+        name: "Kitchen Starter Set",
+        ja: "\u30AD\u30C3\u30C1\u30F3\u7528\u54C1\u30BB\u30C3\u30C8",
+        price: "\u00A52,000",
+        status: "Set item",
+        statusJa: "\u30BB\u30C3\u30C8\u5546\u54C1",
+        badge: "\u4EBA\u6C17",
+        tone: "bg-[#E9F2F7] text-[#466B82]",
   },
   {
-    id: "S-004",
-    name: "Welcome Starter Pack",
-    ja: "新生活スタートセット",
-    price: "¥5,000",
-    status: "Recommended",
-    statusJa: "おすすめ",
-    badge: "おすすめ",
-    tone: "bg-[#F8E9E4] text-[#9B5B4D]",
+        id: "S-004",
+        name: "Welcome Starter Pack",
+        ja: "\u65B0\u751F\u6D3B\u30B9\u30BF\u30FC\u30C8\u30BB\u30C3\u30C8",
+        price: "\u00A55,000",
+        status: "Recommended",
+        statusJa: "\u304A\u3059\u3059\u3081",
+        badge: "\u304A\u3059\u3059\u3081",
+        tone: "bg-[#F8E9E4] text-[#9B5B4D]",
   },
   {
-    id: "E-005",
-    name: "Electric Kettle",
-    ja: "電気ケトル",
-    price: "¥1,000",
-    status: "Cleaned & Good condition",
-    statusJa: "清掃済み・状態良好",
-    tone: "bg-[#EDF4EC] text-[#58715A]",
+        id: "E-005",
+        name: "Electric Kettle",
+        ja: "\u96FB\u6C17\u30B1\u30C8\u30EB",
+        price: "\u00A51,000",
+        status: "Cleaned & Good condition",
+        statusJa: "\u6E05\u6383\u6E08\u307F\u30FB\u72B6\u614B\u826F\u597D",
+        tone: "bg-[#EDF4EC] text-[#58715A]",
   },
-];
+  ];
+
+const categoryNames: Record<LanguageCode, Record<string, string>> = {
+    vi: {
+          Furniture: "N\u1ED9i th\u1EA5t",
+          Appliances: "\u0110\u1ED3 \u0111i\u1EC7n",
+          "Daily Goods": "\u0110\u1ED3 d\u00F9ng h\u1EB1ng ng\u00E0y",
+          Kitchen: "\u0110\u1ED3 b\u1EBFp",
+          Bedding: "Ch\u0103n ga g\u1ED1i",
+          "Starter Sets": "B\u1ED9 \u0111\u1ED3 m\u1EDBi",
+    },
+    si: {
+          Furniture: "\u0D9C\u0DD8\u0DC4 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9",
+          Appliances: "\u0DC0\u0DD2\u0DAF\u0DD4\u0DBD\u0DD2 \u0D8B\u0DB4\u0D9A\u0DBB\u0DAB",
+          "Daily Goods": "\u0DAF\u0DDB\u0DB1\u0DD2\u0D9A \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9",
+          Kitchen: "\u0D9A\u0DD4\u0DC3\u0DCA\u0DC3\u0DD2 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9",
+          Bedding: "\u0DB1\u0DD2\u0DAF\u0DB1 \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9",
+          "Starter Sets": "\u0D86\u0DBB\u0DB8\u0DCA\u0DB7\u0D9A \u0D9A\u0DA7\u0DCA\u0DA7\u0DBD",
+    },
+    ne: {
+          Furniture: "\u092B\u0930\u094D\u0928\u093F\u091A\u0930",
+          Appliances: "\u0935\u093F\u0926\u094D\u092F\u0941\u0924\u0940\u092F \u0938\u093E\u092E\u093E\u0928",
+          "Daily Goods": "\u0926\u0948\u0928\u093F\u0915 \u0938\u093E\u092E\u093E\u0928",
+          Kitchen: "\u092D\u093E\u0928\u094D\u0938\u093E \u0938\u093E\u092E\u093E\u0928",
+          Bedding: "\u0913\u091B\u094D\u092F\u093E\u0928 \u0938\u093E\u092E\u093E\u0928",
+          "Starter Sets": "\u0938\u094D\u091F\u093E\u0930\u094D\u091F\u0930 \u0938\u0947\u091F",
+    },
+    id: {
+          Furniture: "Furnitur",
+          Appliances: "Elektronik",
+          "Daily Goods": "Barang harian",
+          Kitchen: "Peralatan dapur",
+          Bedding: "Perlengkapan tidur",
+          "Starter Sets": "Paket awal",
+    },
+};
+
+const productNames: Record<LanguageCode, Record<string, { name: string; status: string; badge?: string }>> = {
+    vi: {
+          "R-001": { name: "T\u1EE7 l\u1EA1nh 120L", status: "\u0110\u00E3 v\u1EC7 sinh, t\u00ECnh tr\u1EA1ng t\u1ED1t", badge: "Ph\u1ED5 bi\u1EBFn" },
+          "F-002": { name: "Gh\u1EBF \u0103n g\u1ED7", status: "\u0110\u00E3 qua s\u1EED d\u1EE5ng - t\u1ED1t", badge: "G\u1EE3i \u00FD" },
+          "K-003": { name: "B\u1ED9 \u0111\u1ED3 b\u1EBFp c\u01A1 b\u1EA3n", status: "S\u1EA3n ph\u1EA9m theo b\u1ED9", badge: "Ph\u1ED5 bi\u1EBFn" },
+          "S-004": { name: "B\u1ED9 kh\u1EDFi \u0111\u1EA7u cu\u1ED9c s\u1ED1ng m\u1EDBi", status: "G\u1EE3i \u00FD", badge: "G\u1EE3i \u00FD" },
+          "E-005": { name: "\u1EA4m \u0111un n\u01B0\u1EDBc \u0111i\u1EC7n", status: "\u0110\u00E3 v\u1EC7 sinh, t\u00ECnh tr\u1EA1ng t\u1ED1t" },
+    },
+    si: {
+          "R-001": { name: "\u0DC1\u0DD3\u0DAD\u0D9A\u0DBB\u0DAB\u0DBA 120L", status: "\u0DB4\u0DD2\u0DBB\u0DD2\u0DC3\u0DD2\u0DAF\u0DD4 \u0D9A\u0DBB \u0D87\u0DAD, \u0DAD\u0DAD\u0DCA\u0DAD\u0DCA\u0DC0\u0DBA \u0DC4\u0DDC\u0DB3\u0DBA\u0DD2", badge: "\u0DA2\u0DB1\u0DB4\u0DCA\u200D\u0DBB\u0DD2\u0DBA" },
+          "F-002": { name: "\u0DBD\u0DD3 \u0D86\u0DC4\u0DCF\u0DBB \u0DB4\u0DD4\u0DA7\u0DD4\u0DC0", status: "\u0DB7\u0DCF\u0DC0\u0DD2\u0DAD\u0DCF \u0D9A\u0DC5 - \u0DC4\u0DDC\u0DB3\u0DBA\u0DD2", badge: "\u0DB1\u0DD2\u0DBB\u0DCA\u0DAF\u0DDA\u0DC1\u0DD2\u0DAD" },
+          "K-003": { name: "\u0D9A\u0DD4\u0DC3\u0DCA\u0DC3\u0DD2 \u0D86\u0DBB\u0DB8\u0DCA\u0DB7\u0D9A \u0D9A\u0DA7\u0DCA\u0DA7\u0DBD\u0DBA", status: "\u0D9A\u0DA7\u0DCA\u0DA7\u0DBD \u0DB7\u0DCF\u0DAB\u0DCA\u0DA9\u0DBA", badge: "\u0DA2\u0DB1\u0DB4\u0DCA\u200D\u0DBB\u0DD2\u0DBA" },
+          "S-004": { name: "\u0DB1\u0DC0 \u0DA2\u0DD3\u0DC0\u0DD2\u0DAD \u0D86\u0DBB\u0DB8\u0DCA\u0DB7\u0D9A \u0D9A\u0DA7\u0DCA\u0DA7\u0DBD\u0DBA", status: "\u0DB1\u0DD2\u0DBB\u0DCA\u0DAF\u0DDA\u0DC1\u0DD2\u0DAD", badge: "\u0DB1\u0DD2\u0DBB\u0DCA\u0DAF\u0DDA\u0DC1\u0DD2\u0DAD" },
+          "E-005": { name: "\u0DC0\u0DD2\u0DAF\u0DD4\u0DBD\u0DD2 \u0D9A\u0DD9\u0DA7\u0DCA\u0DBD\u0DCA", status: "\u0DB4\u0DD2\u0DBB\u0DD2\u0DC3\u0DD2\u0DAF\u0DD4 \u0D9A\u0DBB \u0D87\u0DAD, \u0DAD\u0DAD\u0DCA\u0DAD\u0DCA\u0DC0\u0DBA \u0DC4\u0DDC\u0DB3\u0DBA\u0DD2" },
+    },
+    ne: {
+          "R-001": { name: "\u092B\u094D\u0930\u093F\u091C 120L", status: "\u0938\u092B\u093E \u0917\u0930\u093F\u090F\u0915\u094B, \u0930\u093E\u092E\u094D\u0930\u094B \u0905\u0935\u0938\u094D\u0925\u093E", badge: "\u0932\u094B\u0915\u092A\u094D\u0930\u093F\u092F" },
+          "F-002": { name: "\u0915\u093E\u0920\u0915\u094B \u0921\u093E\u0907\u0928\u093F\u0919 \u0915\u0941\u0930\u094D\u0938\u0940", status: "\u092A\u094D\u0930\u092F\u094B\u0917 \u0917\u0930\u093F\u090F\u0915\u094B - \u0930\u093E\u092E\u094D\u0930\u094B", badge: "\u0938\u093F\u092B\u093E\u0930\u093F\u0938" },
+          "K-003": { name: "\u092D\u093E\u0928\u094D\u0938\u093E \u0938\u094D\u091F\u093E\u0930\u094D\u091F\u0930 \u0938\u0947\u091F", status: "\u0938\u0947\u091F \u0938\u093E\u092E\u093E\u0928", badge: "\u0932\u094B\u0915\u092A\u094D\u0930\u093F\u092F" },
+          "S-004": { name: "\u0928\u092F\u093E\u0901 \u091C\u0940\u0935\u0928 \u0938\u094D\u091F\u093E\u0930\u094D\u091F\u0930 \u092A\u094D\u092F\u093E\u0915", status: "\u0938\u093F\u092B\u093E\u0930\u093F\u0938", badge: "\u0938\u093F\u092B\u093E\u0930\u093F\u0938" },
+          "E-005": { name: "\u0907\u0932\u0947\u0915\u094D\u091F\u094D\u0930\u093F\u0915 \u0915\u0947\u0924\u0932\u0940", status: "\u0938\u092B\u093E \u0917\u0930\u093F\u090F\u0915\u094B, \u0930\u093E\u092E\u094D\u0930\u094B \u0905\u0935\u0938\u094D\u0925\u093E" },
+    },
+    id: {
+          "R-001": { name: "Kulkas 120L", status: "Sudah dibersihkan, kondisi baik", badge: "Populer" },
+          "F-002": { name: "Kursi makan kayu", status: "Bekas - baik", badge: "Rekomendasi" },
+          "K-003": { name: "Paket dapur awal", status: "Barang paket", badge: "Populer" },
+          "S-004": { name: "Paket awal hidup baru", status: "Rekomendasi", badge: "Rekomendasi" },
+          "E-005": { name: "Ketel listrik", status: "Sudah dibersihkan, kondisi baik" },
+    },
+};
+
+const stepLabels: Record<LanguageCode, Array<{ label: string; sub: string }>> = {
+    vi: [
+      { label: "Xem s\u1EA3n ph\u1EA9m", sub: "Browse items" },
+      { label: "Ch\u1ECDn s\u1EA3n ph\u1EA9m", sub: "Choose an item" },
+      { label: "Li\u00EAn h\u1EC7 qua LINE", sub: "Contact us on LINE" },
+      { label: "X\u00E1c nh\u1EADn h\u00E0ng", sub: "Confirm availability" },
+      { label: "Nh\u1EADn h\u00E0ng & thanh to\u00E1n", sub: "Receive & pay" },
+        ],
+    si: [
+      { label: "\u0DB7\u0DCF\u0DAB\u0DCA\u0DA9 \u0DB6\u0DBD\u0DB1\u0DCA\u0DB1", sub: "Browse items" },
+      { label: "\u0DB7\u0DCF\u0DAB\u0DCA\u0DA9\u0DBA\u0D9A\u0DCA \u0DAD\u0DDD\u0DBB\u0DB1\u0DCA\u0DB1", sub: "Choose an item" },
+      { label: "LINE \u0DB8\u0D9C\u0DD2\u0DB1\u0DCA \u0DC3\u0DB8\u0DCA\u0DB6\u0DB1\u0DCA\u0DB0 \u0DC0\u0DB1\u0DCA\u0DB1", sub: "Contact us on LINE" },
+      { label: "\u0DBD\u0DB6\u0DCF\u0D9C\u0DD0\u0DB1\u0DD3\u0DB8 \u0DAD\u0DC4\u0DC0\u0DD4\u0DBB\u0DD4 \u0D9A\u0DBB\u0DB1\u0DCA\u0DB1", sub: "Confirm availability" },
+      { label: "\u0DBD\u0DB6\u0DCF\u0D9C\u0DD9\u0DB1 \u0D9C\u0DD9\u0DC0\u0DB1\u0DCA\u0DB1", sub: "Receive & pay" },
+        ],
+    ne: [
+      { label: "\u0938\u093E\u092E\u093E\u0928 \u0939\u0947\u0930\u094D\u0928\u0941\u0939\u094B\u0938\u094D", sub: "Browse items" },
+      { label: "\u0938\u093E\u092E\u093E\u0928 \u091B\u093E\u0928\u094D\u0928\u0941\u0939\u094B\u0938\u094D", sub: "Choose an item" },
+      { label: "LINE \u092E\u093E \u0938\u092E\u094D\u092A\u0930\u094D\u0915", sub: "Contact us on LINE" },
+      { label: "\u0909\u092A\u0932\u092C\u094D\u0927\u0924\u093E \u092A\u0941\u0937\u094D\u091F\u093F", sub: "Confirm availability" },
+      { label: "\u092A\u094D\u0930\u093E\u092A\u094D\u0924\u093F \u0930 \u092D\u0941\u0915\u094D\u0924\u093E\u0928\u0940", sub: "Receive & pay" },
+        ],
+    id: [
+      { label: "Lihat barang", sub: "Browse items" },
+      { label: "Pilih barang", sub: "Choose an item" },
+      { label: "Hubungi via LINE", sub: "Contact us on LINE" },
+      { label: "Konfirmasi stok", sub: "Confirm availability" },
+      { label: "Terima & bayar", sub: "Receive & pay" },
+        ],
+};
 
 const howToUseSteps = [
-  { ja: "商品を見る", en: "Browse items", icon: Search, tone: "bg-[#C86F58]" },
-  { ja: "気になる商品を選ぶ", en: "Choose an item", icon: Heart, tone: "bg-[#D7A14D]" },
-  { ja: "LINEで問い合わせ", en: "Contact us on LINE", icon: MessageCircle, tone: "bg-[#7EA86F]" },
-  { ja: "在庫・受け渡し確認", en: "Confirm availability", icon: CalendarCheck, tone: "bg-[#7AA1B8]" },
-  { ja: "受け取り・お支払い", en: "Receive & pay", icon: Handshake, tone: "bg-[#9C83AA]" },
-];
+  { ja: "\u5546\u54C1\u3092\u898B\u308B", en: "Browse items", icon: Search, tone: "bg-[#C86F58]" },
+  { ja: "\u6C17\u306B\u306A\u308B\u5546\u54C1\u3092\u9078\u3076", en: "Choose an item", icon: Heart, tone: "bg-[#D7A14D]" },
+  { ja: "LINE\u3067\u554F\u3044\u5408\u308F\u305B", en: "Contact us on LINE", icon: MessageCircle, tone: "bg-[#7EA86F]" },
+  { ja: "\u5728\u5EAB\u30FB\u53D7\u3051\u6E21\u3057\u78BA\u8A8D", en: "Confirm availability", icon: CalendarCheck, tone: "bg-[#7AA1B8]" },
+  { ja: "\u53D7\u3051\u53D6\u308A\u30FB\u304A\u652F\u6255\u3044", en: "Receive & pay", icon: Handshake, tone: "bg-[#9C83AA]" },
+  ];
 
 function cn(...classes: Array<string | false | null | undefined>) {
-  return classes.filter(Boolean).join(" ");
+    return classes.filter(Boolean).join(" ");
 }
 
 function Button({
-  className,
-  variant = "solid",
-  type = "button",
-  ...props
+    className,
+    variant = "solid",
+    type = "button",
+    ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: "solid" | "outline" }) {
-  return (
-    <button
-      type={type}
-      className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-[#C86F58]/30 disabled:pointer-events-none disabled:opacity-50",
-        variant === "outline" && "border border-[#C8B49B] bg-white text-stone-700 hover:bg-[#FBF8F3]",
-        variant === "solid" && "bg-[#C86F58] text-white hover:bg-[#B8614D]",
-        className,
-      )}
-      {...props}
-    />
-  );
+    return (
+          <button
+                  type={type}
+                  className={cn(
+                            "inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-[#C86F58]/30 disabled:pointer-events-none disabled:opacity-50",
+                            variant === "outline" && "border border-[#C8B49B] bg-white text-stone-700 hover:bg-[#FBF8F3]",
+                            variant === "solid" && "bg-[#C86F58] text-white hover:bg-[#B8614D]",
+                            className,
+                          )}
+            {...props}
+                />
+        );
 }
 
 function Card({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("rounded-[1.25rem] border border-[#E8DDD1] bg-white shadow-sm", className)} {...props} />;
+    return <div className={cn("rounded-[1.25rem] border border-[#E8DDD1] bg-white shadow-sm", className)} {...props} />;
 }
 
 function CardContent({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("p-5", className)} {...props} />;
+    return <div className={cn("p-5", className)} {...props} />;
 }
 
-function PhotoPlaceholder({ large = false }: { large?: boolean }) {
-  return (
-    <div
-      className={cn(
-        "flex flex-col items-center justify-center rounded-[1.4rem] bg-gradient-to-br from-[#F5F0EA] to-[#EEE8E0] text-stone-400",
-        large ? "h-full min-h-[300px]" : "h-36",
-      )}
-    >
-      <ImageIcon size={large ? 54 : 34} strokeWidth={1.4} />
-      <div className="mt-3 text-sm font-medium">写真を追加</div>
-      <div className="text-xs">Add your photo</div>
-    </div>
-  );
+function PhotoPlaceholder({ large = false, t }: { large?: boolean; t: Record<string, string> }) {
+    return (
+          <div
+                  className={cn(
+                            "flex flex-col items-center justify-center rounded-[1.4rem] bg-gradient-to-br from-[#F5F0EA] to-[#EEE8E0] text-stone-400",
+                            large ? "h-full min-h-[300px]" : "h-36",
+                          )}
+                >
+                <ImageIcon size={large ? 54 : 34} strokeWidth={1.4} />
+                <div className="mt-3 text-sm font-medium">{t.photoJa}</div>div>
+                <div className="text-xs">{t.photoEn}</div>div>
+          </div>div>
+        );
 }
 
 function SectionTitle({ ja, en, color = "bg-[#D7A18B]" }: { ja: string; en: string; color?: string }) {
-  return (
-    <div className="mb-6 flex flex-col items-center text-center">
-      <div className="mb-2 flex items-center gap-3">
-        <span className={cn("h-7 w-1.5 rounded-full", color)} />
-        <h2 className="text-2xl font-semibold tracking-[0.08em] text-stone-800">{ja}</h2>
-      </div>
-      <p className="text-sm text-stone-500">{en}</p>
-    </div>
-  );
+    return (
+          <div className="mb-6 flex flex-col items-center text-center">
+                <div className="mb-2 flex items-center gap-3">
+                        <span className={cn("h-7 w-1.5 rounded-full", color)} />
+                        <h2 className="text-2xl font-semibold tracking-[0.08em] text-stone-800">{ja}</h2>h2>
+                </div>div>
+                <p className="text-sm text-stone-500">{en}</p>p>
+          </div>div>
+        );
 }
 
-function Header() {
-  return (
-    <header className="sticky top-0 z-20 border-b border-[#E8DDD1] bg-[#FBF8F3]/95 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
-        <a href="#top" className="flex items-center gap-3" aria-label="WELCOME Reuse Market Home">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#C8B49B] bg-white text-[#54805D]">
-            <Home size={25} strokeWidth={1.6} />
-          </div>
-          <div>
-            <div className="text-xl font-semibold tracking-tight sm:text-2xl">
-              <span className="text-[#C86F58]">WELCOME</span> Reuse Market
-            </div>
-            <div className="hidden text-xs tracking-wide text-stone-500 sm:block">
-              Second-hand items for your new life in Japan.
-            </div>
-          </div>
-        </a>
-
-        <nav className="hidden items-center gap-7 text-xs text-stone-700 lg:flex" aria-label="Main navigation">
-          <a href="#top" className="flex flex-col items-center gap-1 text-[#C86F58]"><Home size={18} />Home</a>
-          <a href="#categories" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Grid2X2 size={18} />Categories</a>
-          <a href="#new-items" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Sparkles size={18} />New Items</a>
-          <a href="#how-to-use" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><BookOpen size={18} />How to Use</a>
-          <a href="#contact" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Mail size={18} />Contact</a>
-        </nav>
-
-        <div className="hidden items-center gap-3 md:flex">
-          <label className="flex items-center gap-2 rounded-full border border-[#E2D5C6] bg-white px-4 py-2 text-xs text-stone-400">
-            <span className="sr-only">Search items</span>
-            <input className="w-24 bg-transparent outline-none placeholder:text-stone-400" placeholder="Search items" />
-            <Search size={15} />
-          </label>
-          <a
-            href={LINE_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#4E9D5C] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#438B50]"
-          >
-            <MessageCircle size={16} /> LINEで相談
-          </a>
-        </div>
-
-        <button className="inline-flex rounded-full border border-[#E2D5C6] bg-white p-2 text-stone-700 lg:hidden" aria-label="Open menu">
-          <Menu size={22} />
-        </button>
-      </div>
-    </header>
-  );
+function Header({ t }: { t: Record<string, string> }) {
+    return (
+          <header className="sticky top-0 z-20 border-b border-[#E8DDD1] bg-[#FBF8F3]/95 backdrop-blur">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
+                        <a href="#top" className="flex items-center gap-3" aria-label="WELCOME Reuse Market Home">
+                                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#C8B49B] bg-white text-[#54805D]">
+                                              <Home size={25} strokeWidth={1.6} />
+                                  </div>div>
+                                  <div>
+                                              <div className="text-xl font-semibold tracking-tight sm:text-2xl">
+                                                            <span className="text-[#C86F58]">WELCOME</span>span> Reuse Market
+                                              </div>div>
+                                              <div className="hidden text-xs tracking-wide text-stone-500 sm:block">
+                                                {t.subtitle}
+                                              </div>div>
+                                  </div>div>
+                        </a>a>
+                
+                        <nav className="hidden items-center gap-7 text-xs text-stone-700 lg:flex" aria-label="Main navigation">
+                                  <a href="#top" className="flex flex-col items-center gap-1 text-[#C86F58]"><Home size={18} />{t.navHome}</a>a>
+                                  <a href="#categories" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Grid2X2 size={18} />{t.navCategories}</a>a>
+                                  <a href="#new-items" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Sparkles size={18} />{t.navNewItems}</a>a>
+                                  <a href="#how-to-use" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><BookOpen size={18} />{t.navHowToUse}</a>a>
+                                  <a href="#contact" className="flex flex-col items-center gap-1 hover:text-[#C86F58]"><Mail size={18} />{t.navContact}</a>a>
+                        </nav>nav>
+                
+                        <div className="hidden items-center gap-3 md:flex">
+                                  <label className="flex items-center gap-2 rounded-full border border-[#E2D5C6] bg-white px-4 py-2 text-xs text-stone-400">
+                                              <span className="sr-only">{t.search}</span>span>
+                                              <input className="w-24 bg-transparent outline-none placeholder:text-stone-400" placeholder={t.search} />
+                                              <Search size={15} />
+                                  </label>label>
+                                  <a
+                                                href={LINE_URL}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#4E9D5C] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#438B50]"
+                                              >
+                                              <MessageCircle size={16} /> {t.line}
+                                  </a>a>
+                        </div>div>
+                
+                        <button className="inline-flex rounded-full border border-[#E2D5C6] bg-white p-2 text-stone-700 lg:hidden" aria-label="Open menu">
+                                  <Menu size={22} />
+                        </button>button>
+                </div>div>
+          </header>header>
+        );
 }
 
-function Hero() {  const [isLanguageOpen, setIsLanguageOpen] = useState(false);  const languageOptions = [{ label: "Ti\u1ebfng Vi\u1ec7t", flag: "\u{1F1FB}\u{1F1F3}" }, { label: "\u0dc3\u0dd2\u0d82\u0dc4\u0dbd", flag: "\u{1F1F1}\u{1F1F0}" }, { label: "\u0928\u0947\u092a\u093e\u0932\u0940", flag: "\u{1F1F3}\u{1F1F5}" }, { label: "Bahasa Indonesia", flag: "\u{1F1EE}\u{1F1E9}" }];
-  return (
-    <section id="top" className="grid gap-10 rounded-[1.8rem] border border-[#E8DDD1] bg-white p-6 shadow-sm md:grid-cols-[0.95fr_1.05fr] md:p-12">
-      <div className="flex flex-col justify-center">
-        <div className="hidden">
-          やさしい日本語 / </div><div className="relative mb-6 w-fit" aria-label="Language support"><button type="button" aria-label="Choose language" aria-expanded={isLanguageOpen} onClick={() => setIsLanguageOpen((open) => !open)} className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E8DDD1] bg-white text-[#C86F58] shadow-sm transition hover:-translate-y-0.5 hover:border-[#C86F58] hover:shadow-md"><Globe size={22} strokeWidth={1.7} /></button>{isLanguageOpen ? (<div className="absolute left-0 top-14 z-30 w-56 overflow-hidden rounded-2xl border border-[#E8DDD1] bg-white py-2 shadow-xl">{languageOptions.map((language) => (<button key={language.label} type="button" className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3] hover:text-[#C86F58]" onClick={() => setIsLanguageOpen(false)}><span className="text-xl">{language.flag}</span><span>{language.label}</span></button>))}</div>) : null}</div><div className="hidden">
-        </div>
-        <h1 className="text-4xl font-semibold leading-[1.35] tracking-[0.04em] text-stone-900 md:text-5xl">
-          Discover Unique Treasures for Your Home
-        </h1>
-        <p className="mt-4 text-xl font-medium tracking-wide text-[#C86F58]">{"\u5bb6\u5177\u30fb\u5bb6\u96fb\u30fb\u65e5\u7528\u54c1\u3092\u3001\u3084\u3055\u3057\u3044\u4fa1\u683c\u3067\u304a\u5c4a\u3051\u3059\u308b\u30ea\u30e6\u30fc\u30b9\u30de\u30fc\u30b1\u30c3\u30c8\u3067\u3059\u3002"}</p><p className="mt-2 text-sm leading-6 text-stone-500">A reuse market delivering furniture, appliances, and daily goods at friendly prices.</p><p className="hidden">
-          やさしい価格で、くらしをそろえよう。
-        </p>
-        <p className="hidden">
-          家具・家電・日用品を、やさしい価格でお届けします。日本で暮らし始める外国人の方に向けた、生活用品専門のリユースマーケットです。
-        </p>
-        <p className="hidden">
-          Affordable second-hand furniture, appliances, and daily goods for people starting a new life in Japan.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-4">
-          <a href="#new-items" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C86F58] px-7 py-4 text-sm font-medium text-white transition hover:bg-[#B8614D]">
-            <ShoppingBag size={18} /> 商品を見る
-          </a>
-          <a href="#how-to-use" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#C8B49B] bg-white px-7 py-4 text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3]">
-            <BookOpen size={18} /> ご利用の流れ
-          </a>
-        </div>
-      </div>
-      <PhotoPlaceholder large />
-    </section>
-  );
+function Hero({
+    currentLanguage,
+    onLanguageChange,
+    t,
+}: {
+    currentLanguage: LanguageCode;
+    onLanguageChange: (language: LanguageCode) => void;
+    t: Record<string, string>;
+}) {
+    const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+    const currentOption = languageOptions.find((language) => language.code === currentLanguage) ?? languageOptions[0];
+  
+    return (
+          <section id="top" className="grid gap-10 rounded-[1.8rem] border border-[#E8DDD1] bg-white p-6 shadow-sm md:grid-cols-[0.95fr_1.05fr] md:p-12">
+                <div className="flex flex-col justify-center">
+                        <div className="relative mb-6 w-fit" aria-label="Language support">
+                                  <button
+                                                type="button"
+                                                aria-label="Choose language"
+                                                aria-expanded={isLanguageOpen}
+                                                onClick={() => setIsLanguageOpen((open) => !open)}
+                                                className="flex items-center gap-2 rounded-full border border-[#E8DDD1] bg-white px-4 py-2 text-sm font-medium text-[#C86F58] shadow-sm transition hover:-translate-y-0.5 hover:border-[#C86F58] hover:shadow-md"
+                                              >
+                                              <Globe size={20} strokeWidth={1.7} />
+                                              <span className="text-xl">{currentOption.flag}</span>span>
+                                  </button>button>
+                          {isLanguageOpen ? (
+                        <div className="absolute left-0 top-14 z-30 w-56 overflow-hidden rounded-2xl border border-[#E8DDD1] bg-white py-2 shadow-xl">
+                          {languageOptions.map((language) => (
+                                          <button
+                                                              key={language.code}
+                                                              type="button"
+                                                              className={cn(
+                                                                                    "flex w-full items-center gap-3 px-4 py-3 text-left text-sm font-medium transition hover:bg-[#FBF8F3] hover:text-[#C86F58]",
+                                                                                    currentLanguage === language.code ? "bg-[#FBF8F3] text-[#C86F58]" : "text-stone-700",
+                                                                                  )}
+                                                              onClick={() => {
+                                                                                    onLanguageChange(language.code);
+                                                                                    setIsLanguageOpen(false);
+                                                              }}
+                                                            >
+                                                            <span className="text-xl">{language.flag}</span>span>
+                                                            <span>{language.label}</span>span>
+                                          </button>button>
+                                        ))}
+                        </div>div>
+                      ) : null}
+                        </div>div>
+                        <h1 className="text-4xl font-semibold leading-[1.35] tracking-[0.04em] text-stone-900 md:text-5xl">
+                          {t.heroTitle}
+                        </h1>h1>
+                        <p className="mt-4 text-xl font-medium tracking-wide text-[#C86F58]">{t.heroLead}</p>p>
+                        <p className="mt-2 text-sm leading-6 text-stone-500">{t.heroSub}</p>p>
+                        <div className="mt-8 flex flex-wrap gap-4">
+                                  <a href="#new-items" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C86F58] px-7 py-4 text-sm font-medium text-white transition hover:bg-[#B8614D]">
+                                              <ShoppingBag size={18} /> {t.viewItems}
+                                  </a>a>
+                                  <a href="#how-to-use" className="inline-flex items-center justify-center gap-2 rounded-full border border-[#C8B49B] bg-white px-7 py-4 text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3]">
+                                              <BookOpen size={18} /> {t.howFlow}
+                                  </a>a>
+                        </div>div>
+                </div>div>
+                <PhotoPlaceholder large t={t} />
+          </section>section>
+        );
 }
 
-function CategorySection() {
-  return (
-    <section id="categories" className="mt-12 scroll-mt-24">
-      <SectionTitle ja="カテゴリーから探す" en="Browse by category" />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
-        {categories.map((category) => {
-          const Icon = category.icon;
-          return (
-            <Card key={category.name} className={cn("rounded-[1.4rem]", category.tone)}>
-              <CardContent className="flex min-h-44 flex-col items-center justify-center p-5 text-center">
-                <Icon size={42} strokeWidth={1.35} className="mb-4 text-stone-700" />
-                <div className="font-semibold tracking-wide">{category.ja}</div>
-                <div className="text-sm text-stone-600">{category.name}</div>
-                <div className="mt-5 w-full border-t border-white/70 pt-3 text-xs text-stone-500">
-                  {category.count} items
-                </div>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-    </section>
-  );
+function CategorySection({ language, t }: { language: LanguageCode; t: Record<string, string> }) {
+    return (
+          <section id="categories" className="mt-12 scroll-mt-24">
+                <SectionTitle ja={t.categoriesJa} en={t.categoriesEn} />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+                  {categories.map((category) => {
+                      const Icon = category.icon;
+                      return (
+                                    <Card key={category.name} className={cn("rounded-[1.4rem]", category.tone)}>
+                                                  <CardContent className="flex min-h-44 flex-col items-center justify-center p-5 text-center">
+                                                                  <Icon size={42} strokeWidth={1.35} className="mb-4 text-stone-700" />
+                                                                  <div className="font-semibold tracking-wide">{categoryNames[language][category.name]}</div>div>
+                                                                  <div className="text-sm text-stone-600">{category.name}</div>div>
+                                                                  <div className="mt-5 w-full border-t border-white/70 pt-3 text-xs text-stone-500">
+                                                                    {category.count} items
+                                                                  </div>div>
+                                                  </CardContent>CardContent>
+                                    </Card>Card>
+                                  );
+          })}
+                </div>div>
+          </section>section>
+        );
 }
 
 function ProductCard({
-  product,
-  isSelected,
-  onSelect,
+    product,
+    isSelected,
+    onSelect,
+    language,
+    t,
 }: {
-  product: Product;
-  isSelected: boolean;
-  onSelect: (product: Product) => void;
+    product: Product;
+    isSelected: boolean;
+    onSelect: (product: Product) => void;
+    language: LanguageCode;
+    t: Record<string, string>;
 }) {
-  return (
-    <button type="button" onClick={() => onSelect(product)} className="text-left">
-      <Card
-        className={cn(
-          "overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md",
-          isSelected && "ring-2 ring-[#C86F58]",
-        )}
-      >
-        <CardContent className="p-3">
-          <div className="relative">
-            {product.badge ? (
-              <span className="absolute left-2 top-2 z-10 rounded-md bg-[#C86F58] px-2 py-1 text-xs text-white">
-                {product.badge}
-              </span>
-            ) : null}
-            <PhotoPlaceholder />
-          </div>
-          <div className="mt-4">
-            <div className="font-semibold tracking-wide">{product.ja}</div>
-            <div className="text-xs text-stone-500">{product.name}</div>
-            <div className="mt-2 text-2xl font-semibold text-[#C86F58]">{product.price}</div>
-            <div className={cn("mt-3 rounded-xl px-3 py-2 text-center text-xs font-medium", product.tone)}>
-              <div>{product.statusJa}</div>
-              <div className="text-[11px] opacity-80">{product.status}</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </button>
-  );
+    const localizedProduct = productNames[language][product.id];
+  
+    return (
+          <button type="button" onClick={() => onSelect(product)} className="text-left">
+                <Card
+                          className={cn(
+                                      "overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md",
+                                      isSelected && "ring-2 ring-[#C86F58]",
+                                    )}
+                        >
+                        <CardContent className="p-3">
+                                  <div className="relative">
+                                    {product.badge ? (
+                                        <span className="absolute left-2 top-2 z-10 rounded-md bg-[#C86F58] px-2 py-1 text-xs text-white">
+                                          {localizedProduct.badge ?? product.badge}
+                                        </span>span>
+                                      ) : null}
+                                              <PhotoPlaceholder t={t} />
+                                  </div>div>
+                                  <div className="mt-4">
+                                              <div className="font-semibold tracking-wide">{localizedProduct.name}</div>div>
+                                              <div className="text-xs text-stone-500">{product.name}</div>div>
+                                              <div className="mt-2 text-2xl font-semibold text-[#C86F58]">{product.price}</div>div>
+                                              <div className={cn("mt-3 rounded-xl px-3 py-2 text-center text-xs font-medium", product.tone)}>
+                                                            <div>{localizedProduct.status}</div>div>
+                                                            <div className="text-[11px] opacity-80">{product.status}</div>div>
+                                              </div>div>
+                                  </div>div>
+                        </CardContent>CardContent>
+                </Card>Card>
+          </button>button>
+        );
 }
 
-function NewItemsSection({ selected, onSelect }: { selected: Product; onSelect: (product: Product) => void }) {
-  return (
-    <section id="new-items" className="mt-14 scroll-mt-24">
-      <div className="mb-6 flex items-center justify-between">
-        <div className="mx-auto md:mx-0">
-          <SectionTitle ja="新着アイテム" en="New Items" />
-        </div>
-        <Button variant="outline" className="hidden px-5 py-2.5 text-stone-600 md:inline-flex">
-          すべて見る　View all
-        </Button>
-      </div>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} isSelected={selected.id === product.id} onSelect={onSelect} />
-        ))}
-      </div>
-    </section>
-  );
+function NewItemsSection({
+    selected,
+    onSelect,
+    language,
+    t,
+}: {
+    selected: Product;
+    onSelect: (product: Product) => void;
+    language: LanguageCode;
+    t: Record<string, string>;
+}) {
+    return (
+          <section id="new-items" className="mt-14 scroll-mt-24">
+                <div className="mb-6 flex items-center justify-between">
+                        <div className="mx-auto md:mx-0">
+                                  <SectionTitle ja={t.newItemsJa} en={t.newItemsEn} />
+                        </div>div>
+                        <Button variant="outline" className="hidden px-5 py-2.5 text-stone-600 md:inline-flex">
+                          {t.viewAll}
+                        </Button>Button>
+                </div>div>
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+                  {products.map((product) => (
+                      <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    isSelected={selected.id === product.id}
+                                    onSelect={onSelect}
+                                    language={language}
+                                    t={t}
+                                  />
+                    ))}
+                </div>div>
+          </section>section>
+        );
 }
 
-function FeaturedProduct({ selected }: { selected: Product }) {
-  return (
-    <section className="mt-10 grid gap-8 rounded-[1.7rem] border border-[#E8DDD1] bg-white p-5 shadow-sm lg:grid-cols-[0.95fr_1.55fr] lg:p-7">
-      <div className="relative">
-        <div className="absolute left-0 top-0 z-10 rounded-br-2xl rounded-tl-[1.4rem] bg-[#D69A4E] px-4 py-3 text-sm font-medium text-white">
-          人気商品<br /><span className="text-xs opacity-90">Popular</span>
-        </div>
-        <PhotoPlaceholder large />
-      </div>
-
-      <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="flex flex-col justify-center">
-          <div className="mb-3 flex items-center gap-2 text-[#54805D]">
-            <span className="h-6 w-1 rounded-full bg-[#9EB99A]" />
-            <div>
-              <div className="text-xl font-semibold tracking-wide">おすすめ商品</div>
-              <div className="text-xs text-stone-500">Featured Item</div>
-            </div>
-          </div>
-          <h3 className="text-3xl font-semibold tracking-wide">{selected.ja}</h3>
-          <p className="text-stone-500">{selected.name}</p>
-          <div className="mt-4 text-4xl font-semibold text-[#C86F58]">{selected.price}</div>
-          <div className="mt-5 space-y-3 text-sm">
-            <div className="rounded-xl bg-[#EDF4EC] px-4 py-3 text-[#58715A]">
-              <CheckCircle2 className="mr-2 inline" size={17} />
-              {selected.statusJa}
-              <br />
-              <span className="ml-6 text-xs">{selected.status}</span>
-            </div>
-            <div className="rounded-xl bg-[#E9F2F7] px-4 py-3 text-[#466B82]">
-              <Truck className="mr-2 inline" size={17} />
-              受け取り・配送可能
-              <br />
-              <span className="ml-6 text-xs">Pickup / Delivery available</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-center">
-          <p className="text-sm leading-7 text-stone-700">
-            この商品は中古品です。小さなキズや使用感がありますが、使用には問題ありません。日本での生活を始める方におすすめです。
-          </p>
-          <p className="mt-3 text-sm leading-6 text-stone-500">
-            This is a second-hand item. Small scratches and wear may be present, but it works well. Recommended for people starting life in Japan.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2 text-xs">
-            <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
-              <ShieldCheck size={14} /> 動作確認済み
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
-              <CheckCircle2 size={14} /> 清掃済み
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
-              <Heart size={14} /> 女性対応あり
-            </span>
-          </div>
-          <a
-            href={LINE_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#4E9D5C] px-5 py-4 text-sm font-medium text-white transition hover:bg-[#438B50]"
-          >
-            <MessageCircle size={18} /> この商品についてLINEで相談
-          </a>
-        </div>
-      </div>
-    </section>
-  );
+function FeaturedProduct({ selected, language, t }: { selected: Product; language: LanguageCode; t: Record<string, string> }) {
+    const localizedProduct = productNames[language][selected.id];
+  
+    return (
+          <section className="mt-10 grid gap-8 rounded-[1.7rem] border border-[#E8DDD1] bg-white p-5 shadow-sm lg:grid-cols-[0.95fr_1.55fr] lg:p-7">
+                <div className="relative">
+                        <div className="absolute left-0 top-0 z-10 rounded-br-2xl rounded-tl-[1.4rem] bg-[#D69A4E] px-4 py-3 text-sm font-medium text-white">
+                          {t.popular}<br /><span className="text-xs opacity-90">{t.popularEn}</span>span>
+                        </div>div>
+                        <PhotoPlaceholder large t={t} />
+                </div>div>
+          
+                <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+                        <div className="flex flex-col justify-center">
+                                  <div className="mb-3 flex items-center gap-2 text-[#54805D]">
+                                              <span className="h-6 w-1 rounded-full bg-[#9EB99A]" />
+                                              <div>
+                                                            <div className="text-xl font-semibold tracking-wide">{t.featuredJa}</div>div>
+                                                            <div className="text-xs text-stone-500">{t.featuredEn}</div>div>
+                                              </div>div>
+                                  </div>div>
+                                  <h3 className="text-3xl font-semibold tracking-wide">{localizedProduct.name}</h3>h3>
+                                  <p className="text-stone-500">{selected.name}</p>p>
+                                  <div className="mt-4 text-4xl font-semibold text-[#C86F58]">{selected.price}</div>div>
+                                  <div className="mt-5 space-y-3 text-sm">
+                                              <div className="rounded-xl bg-[#EDF4EC] px-4 py-3 text-[#58715A]">
+                                                            <CheckCircle2 className="mr-2 inline" size={17} />
+                                                {localizedProduct.status}
+                                                            <br />
+                                                            <span className="ml-6 text-xs">{selected.status}</span>span>
+                                              </div>div>
+                                              <div className="rounded-xl bg-[#E9F2F7] px-4 py-3 text-[#466B82]">
+                                                            <Truck className="mr-2 inline" size={17} />
+                                                {t.delivery}
+                                                            <br />
+                                                            <span className="ml-6 text-xs">{t.deliveryEn}</span>span>
+                                              </div>div>
+                                  </div>div>
+                        </div>div>
+                
+                        <div className="flex flex-col justify-center">
+                                  <p className="text-sm leading-7 text-stone-700">
+                                    {t.productNote}
+                                  </p>p>
+                                  <div className="mt-5 flex flex-wrap gap-2 text-xs">
+                                              <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
+                                                            <ShieldCheck size={14} /> {t.checked}
+                                              </span>span>
+                                              <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
+                                                            <CheckCircle2 size={14} /> {t.cleaned}
+                                              </span>span>
+                                              <span className="inline-flex items-center gap-1 rounded-lg border border-[#D6E1D3] bg-white px-3 py-2 text-stone-600">
+                                                            <Heart size={14} /> {t.womenSupport}
+                                              </span>span>
+                                  </div>div>
+                                  <a
+                                                href={LINE_URL}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#4E9D5C] px-5 py-4 text-sm font-medium text-white transition hover:bg-[#438B50]"
+                                              >
+                                              <MessageCircle size={18} /> {t.askLine}
+                                  </a>a>
+                        </div>div>
+                </div>div>
+          </section>section>
+        );
 }
 
-function HowToUseSection() {
-  return (
-    <section id="how-to-use" className="mt-12 scroll-mt-24">
-      <SectionTitle ja="ご利用の流れ" en="How to Use" color="bg-[#E5D8C9]" />
-      <div className="grid gap-4 md:grid-cols-5">
-        {howToUseSteps.map((step, index) => {
-          const Icon = step.icon;
-          return (
-            <div key={step.ja} className="rounded-[1.25rem] border border-[#E8DDD1] bg-white p-5 text-center shadow-sm">
-              <div className={cn("mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold text-white", step.tone)}>
-                {String(index + 1).padStart(2, "0")}
-              </div>
-              <Icon className="mx-auto mb-3 text-stone-700" size={28} strokeWidth={1.4} />
-              <div className="text-sm font-semibold">{step.ja}</div>
-              <div className="mt-1 text-xs text-stone-500">{step.en}</div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
+function HowToUseSection({ language, t }: { language: LanguageCode; t: Record<string, string> }) {
+    return (
+          <section id="how-to-use" className="mt-12 scroll-mt-24">
+                <SectionTitle ja={t.howFlow} en={t.navHowToUse} color="bg-[#E5D8C9]" />
+                <div className="grid gap-4 md:grid-cols-5">
+                  {howToUseSteps.map((step, index) => {
+                      const Icon = step.icon;
+                      const label = stepLabels[language][index];
+                      return (
+                                    <div key={step.ja} className="rounded-[1.25rem] border border-[#E8DDD1] bg-white p-5 text-center shadow-sm">
+                                                  <div className={cn("mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold text-white", step.tone)}>
+                                                    {String(index + 1).padStart(2, "0")}
+                                                  </div>div>
+                                                  <Icon className="mx-auto mb-3 text-stone-700" size={28} strokeWidth={1.4} />
+                                                  <div className="text-sm font-semibold">{label.label}</div>div>
+                                                  <div className="mt-1 text-xs text-stone-500">{label.sub}</div>div>
+                                    </div>div>
+                                  );
+          })}
+                </div>div>
+          </section>section>
+        );
 }
 
-function Footer() {
-  return (
-    <footer id="contact" className="mt-14 border-t border-[#E8DDD1] bg-[#F4EEE5]">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
-        <div>
-          <div className="text-xl font-semibold"><span className="text-[#C86F58]">WELCOME</span> Reuse Market</div>
-          <p className="mt-2 text-sm text-stone-600">日本での新しい生活を、やさしく、もっと楽しく。</p>
-          <p className="mt-1 text-xs text-stone-500">A gentle start to your new life in Japan.</p>
-        </div>
-        <div className="space-y-1 text-sm text-stone-600">
-          <div className="mb-2 font-semibold text-stone-800">クイックリンク</div>
-          <p>ホーム / Home</p>
-          <p>カテゴリー / Categories</p>
-          <p>新着アイテム / New Items</p>
-          <p>ご利用の流れ / How to Use</p>
-        </div>
-        <div className="space-y-1 text-sm text-stone-600">
-          <div className="mb-2 font-semibold text-stone-800">サポート</div>
-          <p>よくある質問 / FAQ</p>
-          <p>配送・受け取り / Delivery</p>
-          <p>お支払い方法 / Payment Methods</p>
-          <p>利用規約 / Legal Info</p>
-        </div>
-        <div>
-          <div className="mb-3 font-semibold text-stone-800">ご相談はこちら</div>
-          <a
-            href={LINE_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#4E9D5C] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#438B50]"
-          >
-            <MessageCircle size={16} /> LINEで相談
-          </a>
-          <a
-            href="mailto:info@example.com"
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#C8B49B] bg-white px-4 py-2.5 text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3]"
-          >
-            <Mail size={16} /> お問い合わせ
-          </a>
-        </div>
-      </div>
-      <div className="border-t border-[#E8DDD1] py-4 text-center text-xs text-stone-500">
-        © 2025 WELCOME Reuse Market. All rights reserved.
-      </div>
-    </footer>
-  );
+function Footer({ t }: { t: Record<string, string> }) {
+    return (
+          <footer id="contact" className="mt-14 border-t border-[#E8DDD1] bg-[#F4EEE5]">
+                <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+                        <div>
+                                  <div className="text-xl font-semibold"><span className="text-[#C86F58]">WELCOME</span>span> Reuse Market</div>div>
+                                  <p className="mt-2 text-sm text-stone-600">{t.footerLead}</p>p>
+                                  <p className="mt-1 text-xs text-stone-500">{t.footerSub}</p>p>
+                        </div>div>
+                        <div className="space-y-1 text-sm text-stone-600">
+                                  <div className="mb-2 font-semibold text-stone-800">{t.quickLinks}</div>div>
+                                  <p>{t.navHome}</p>p>
+                                  <p>{t.navCategories}</p>p>
+                                  <p>{t.navNewItems}</p>p>
+                                  <p>{t.navHowToUse}</p>p>
+                        </div>div>
+                        <div className="space-y-1 text-sm text-stone-600">
+                                  <div className="mb-2 font-semibold text-stone-800">{t.support}</div>div>
+                                  <p>{t.faq}</p>p>
+                                  <p>{t.deliveryFooter}</p>p>
+                                  <p>{t.payment}</p>p>
+                                  <p>{t.legal}</p>p>
+                        </div>div>
+                        <div>
+                                  <div className="mb-3 font-semibold text-stone-800">{t.contactUs}</div>div>
+                                  <a
+                                                href={LINE_URL}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#4E9D5C] px-4 py-2.5 text-sm font-medium text-white transition hover:bg-[#438B50]"
+                                              >
+                                              <MessageCircle size={16} /> {t.line}
+                                  </a>a>
+                                  <a
+                                                href="mailto:info@example.com"
+                                                className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#C8B49B] bg-white px-4 py-2.5 text-sm font-medium text-stone-700 transition hover:bg-[#FBF8F3]"
+                                              >
+                                              <Mail size={16} /> {t.contactMail}
+                                  </a>a>
+                        </div>div>
+                </div>div>
+                <div className="border-t border-[#E8DDD1] py-4 text-center text-xs text-stone-500">
+                        \u00A9 2025 WELCOME Reuse Market. All rights reserved.
+                </div>div>
+          </footer>footer>
+        );
 }
 
 export default function App() {
-  const [selectedProductId, setSelectedProductId] = useState(products[0].id);
-
-  const selectedProduct = useMemo(() => {
-    return products.find((product) => product.id === selectedProductId) ?? products[0];
-  }, [selectedProductId]);
-
-  return (
-    <div className="min-h-screen bg-[#FBF8F3] text-stone-800 antialiased">
-      <Header />
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
-        <Hero />
-        <CategorySection />
-        <NewItemsSection selected={selectedProduct} onSelect={(product) => setSelectedProductId(product.id)} />
-        <FeaturedProduct selected={selectedProduct} />
-        <HowToUseSection />
-      </main>
-      <Footer />
-    </div>
-  );
+    const [selectedProductId, setSelectedProductId] = useState(products[0].id);
+    const [language, setLanguage] = useState<LanguageCode>("vi");
+    const t = translations[language];
+  
+    const selectedProduct = useMemo(() => {
+          return products.find((product) => product.id === selectedProductId) ?? products[0];
+    }, [selectedProductId]);
+  
+    return (
+          <div className="min-h-screen bg-[#FBF8F3] text-stone-800 antialiased">
+                <Header t={t} />
+                <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">
+                        <Hero currentLanguage={language} onLanguageChange={setLanguage} t={t} />
+                        <CategorySection language={language} t={t} />
+                        <NewItemsSection
+                                    selected={selectedProduct}
+                                    onSelect={(product) => setSelectedProductId(product.id)}
+                                    language={language}
+                                    t={t}
+                                  />
+                        <FeaturedProduct selected={selectedProduct} language={language} t={t} />
+                        <HowToUseSection language={language} t={t} />
+                </main>main>
+                <Footer t={t} />
+          </div>div>
+        );
 }
+</div>
