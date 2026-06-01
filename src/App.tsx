@@ -235,7 +235,7 @@ function Hero() {
           やさしい日本語 / English support
         </div>
         <h1 className="text-4xl font-semibold leading-[1.35] tracking-[0.04em] text-stone-900 md:text-5xl">
-          新しいくらしを、<br />たのしくスタート！
+          Discover Unique Treasures for Your Home
         </h1>
         <p className="mt-4 text-xl font-medium tracking-wide text-[#C86F58]">
           やさしい価格で、くらしをそろえよう。
