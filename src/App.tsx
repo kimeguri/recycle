@@ -729,14 +729,14 @@ function ProductCard({
         const localizedProduct = productNames[language][product.id];
 
   return (/*#__PURE__*/
-            _jsx("button", { type: "button", onClick: () => onSelect(product), className: "w-full text-left", children: /*#__PURE__*/
+                        _jsx("button", { type: "button", onClick: () => onSelect(product), className: "h-full w-full text-left", children: /*#__PURE__*/
                                   _jsx(Card, {
                                                 className: cn(
-                                                                "overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md",
+                                                                                                                                "flex h-full flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md",
                                                                 isSelected && "ring-2 ring-[#C86F58]"
                                                               ), children: /*#__PURE__*/
 
-                                                _jsxs(CardContent, { className: "p-3", children: [/*#__PURE__*/
+                                                                                                _jsxs(CardContent, { className: "flex h-full flex-col p-3", children: [/*#__PURE__*/
                                                                               _jsxs("div", { className: "relative", children: [
                                                                                                 product.badge ? /*#__PURE__*/
                                                                                                 _jsx("span", { className: "absolute left-2 top-2 z-10 rounded-md bg-[#C86F58] px-2 py-1 text-xs text-white", children:
@@ -745,11 +745,11 @@ function ProductCard({
                                                                                                 null, /*#__PURE__*/
                                                                                                 _jsx("img", { src: product.image, alt: product.imageAlt, loading: "lazy", className: "h-44 w-full rounded-[1.2rem] object-cover sm:h-36" })] }
                                                                                               ), /*#__PURE__*/
-                                                                _jsxs("div", { className: "mt-4", children: [/*#__PURE__*/
-                                                                                          _jsx("div", { className: "font-semibold tracking-wide", children: localizedProduct.name }), /*#__PURE__*/
+                                                                                                                                _jsxs("div", { className: "mt-4 flex flex-1 flex-col", children: [/*#__PURE__*/
+                                                                                                                                                                                    _jsx("div", { className: "min-h-[3rem] font-semibold leading-6 tracking-wide", children: localizedProduct.name }), /*#__PURE__*/
                                                                                   _jsx("div", { className: "text-xs text-stone-500", children: product.name }), /*#__PURE__*/
                                                                                   _jsx("div", { className: "mt-2 text-2xl font-semibold text-[#C86F58]", children: product.price }), /*#__PURE__*/
-                                                                                  _jsxs("div", { className: cn("mt-3 rounded-xl px-3 py-2 text-center text-xs font-medium", product.tone), children: [/*#__PURE__*/
+                                                                                  _jsxs("div", { className: cn("mt-auto rounded-xl px-3 py-2 text-center text-xs font-medium", product.tone), children: [/*#__PURE__*/
                                                                                                               _jsx("div", { children: localizedProduct.status }), /*#__PURE__*/
                                                                                                       _jsx("div", { className: "text-[11px] opacity-80", children: product.status })] }
                                                                                                     )] }
