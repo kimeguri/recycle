@@ -807,16 +807,16 @@ function FeaturedProduct({ selected, language, t }) {
         const localizedProduct = productNames[language][selected.id];
 
   return (/*#__PURE__*/
-            _jsxs("section", { className: "mt-10 grid gap-8 rounded-[1.7rem] border border-[#E8DDD1] bg-white p-5 shadow-sm lg:grid-cols-[0.95fr_1.55fr] lg:p-7", children: [/*#__PURE__*/
+            _jsxs("section", { className: "mt-10 grid gap-8 rounded-[1.8rem] border border-[#E8DDD1] bg-white p-5 shadow-[0_24px_70px_rgba(120,93,61,0.13)] lg:grid-cols-[0.9fr_1.6fr] lg:p-7", children: [/*#__PURE__*/
                                     _jsxs("div", { className: "relative", children: [/*#__PURE__*/
                                                           _jsxs("div", { className: "absolute left-0 top-0 z-10 rounded-br-2xl rounded-tl-[1.4rem] bg-[#D69A4E] px-4 py-3 text-sm font-medium text-white", children: [
                                                                           t.popular, /*#__PURE__*/_jsx("br", {}), /*#__PURE__*/_jsx("span", { className: "text-xs opacity-90", children: t.popularEn })] }
                                                                         ), /*#__PURE__*/
-                                                  _jsx("div", { className: "h-full min-h-[300px] overflow-hidden rounded-[1.4rem] bg-[#EEE8E0]", children: /*#__PURE__*/_jsx("img", { src: selected.image, alt: selected.imageAlt, className: "h-full min-h-[300px] w-full object-cover" }) })] }
+                                                  _jsxs("div", { className: "relative h-full min-h-[340px] overflow-hidden rounded-[1.4rem] bg-[#EEE8E0] shadow-inner", children: [/*#__PURE__*/_jsx("img", { src: selected.image, alt: selected.imageAlt, className: "h-full min-h-[340px] w-full object-cover" }), /*#__PURE__*/_jsxs("div", { className: "absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2", children: [/*#__PURE__*/_jsx("div", { className: "rounded-xl bg-white/92 px-3 py-2 text-xs font-medium text-stone-700 shadow-sm", children: selected.photos }), /*#__PURE__*/_jsx("div", { className: "rounded-xl bg-white/92 px-3 py-2 text-xs font-medium text-stone-700 shadow-sm", children: "Video ready" }), /*#__PURE__*/_jsx("div", { className: "rounded-xl bg-white/92 px-3 py-2 text-xs font-medium text-stone-700 shadow-sm", children: selected.size })] })] })] }
                                                 ), /*#__PURE__*/
 
-                        _jsxs("div", { className: "grid gap-6 lg:grid-cols-[0.85fr_1.15fr]", children: [/*#__PURE__*/
-                                              _jsxs("div", { className: "flex flex-col justify-center", children: [/*#__PURE__*/
+                        _jsxs("div", { className: "grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-stretch", children: [/*#__PURE__*/
+                                              _jsxs("div", { className: "flex flex-col justify-between rounded-[1.4rem] bg-[#FBF8F3] p-5", children: [/*#__PURE__*/
                                                                       _jsxs("div", { className: "mb-3 flex items-center gap-2 text-[#54805D]", children: [/*#__PURE__*/
                                                                                                 _jsx("span", { className: "h-6 w-1 rounded-full bg-[#9EB99A]" }), /*#__PURE__*/
                                                                                         _jsxs("div", { children: [/*#__PURE__*/
@@ -824,17 +824,17 @@ function FeaturedProduct({ selected, language, t }) {
                                                                                                             _jsx("div", { className: "text-xs text-stone-500", children: t.featuredEn })] }
                                                                                                           )] }
                                                                                       ), /*#__PURE__*/
-                                                              _jsx("h3", { className: "text-3xl font-semibold tracking-wide", children: localizedProduct.name }), /*#__PURE__*/
+                                                              _jsx("h3", { className: "text-3xl font-semibold leading-tight tracking-wide", children: localizedProduct.name }), /*#__PURE__*/
                                                               _jsx("p", { className: "text-stone-500", children: selected.name }), /*#__PURE__*/
-                                                              _jsx("div", { className: "mt-4 text-4xl font-semibold text-[#C86F58]", children: selected.price }), /*#__PURE__*/
-                                                              _jsxs("div", { className: "mt-5 space-y-3 text-sm", children: [/*#__PURE__*/
-                                                                                        _jsxs("div", { className: "rounded-xl bg-[#EDF4EC] px-4 py-3 text-[#58715A]", children: [/*#__PURE__*/
+                                                              _jsxs("div", { className: "mt-5 rounded-2xl border border-[#E8DDD1] bg-white p-4", children: [/*#__PURE__*/_jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.16em] text-stone-400", children: "Price" }), /*#__PURE__*/_jsx("div", { className: "mt-1 text-4xl font-semibold text-[#C86F58]", children: selected.price }), /*#__PURE__*/_jsx("div", { className: "mt-2 text-xs text-stone-500", children: "Tax included / payment on pickup" })] }), /*#__PURE__*/
+                                                              _jsxs("div", { className: "mt-5 grid gap-3 text-sm", children: [/*#__PURE__*/
+                                                                                        _jsxs("div", { className: "rounded-2xl bg-[#EDF4EC] px-4 py-3 text-[#58715A]", children: [/*#__PURE__*/
                                                                                                                     _jsx(CheckCircle2, { className: "mr-2 inline", size: 17 }),
                                                                                                             localizedProduct.status, /*#__PURE__*/
                                                                                                             _jsx("br", {}), /*#__PURE__*/
                                                                                                             _jsx("span", { className: "ml-6 text-xs", children: selected.status })] }
                                                                                                           ), /*#__PURE__*/
-                                                                                _jsxs("div", { className: "rounded-xl bg-[#E9F2F7] px-4 py-3 text-[#466B82]", children: [/*#__PURE__*/
+                                                                                _jsxs("div", { className: "rounded-2xl bg-[#E9F2F7] px-4 py-3 text-[#466B82]", children: [/*#__PURE__*/
                                                                                                             _jsx(Truck, { className: "mr-2 inline", size: 17 }),
                                                                                                     t.delivery, /*#__PURE__*/
                                                                                                     _jsx("br", {}), /*#__PURE__*/
@@ -843,18 +843,18 @@ function FeaturedProduct({ selected, language, t }) {
                                                                               )] }
                                                             ), /*#__PURE__*/
 
-                                      _jsxs("div", { className: "flex flex-col justify-center", children: [/*#__PURE__*/
-                                                              _jsx("p", { className: "text-sm leading-7 text-stone-700", children: t.productNote }), /*#__PURE__*/
-                                                      _jsxs("div", { className: "mt-5 overflow-hidden rounded-2xl border border-[#E8DDD1] bg-[#FBF8F3]", children: [/*#__PURE__*/
-                                                                                _jsxs("div", { className: "border-b border-[#E8DDD1] px-4 py-3", children: [/*#__PURE__*/
-                                                                                                          _jsxs("div", { className: "text-sm font-semibold text-stone-800", children: [localizedProduct.name, " details"] }), /*#__PURE__*/
-                                                                                                  _jsx("p", { className: "mt-1 text-xs leading-5 text-stone-600", children: "Photos, video, size, and condition are organized before customers ask on LINE." })] }
+                                      _jsxs("div", { className: "flex flex-col justify-between rounded-[1.4rem] border border-[#EFE4D8] p-5", children: [/*#__PURE__*/
+                                                              _jsx("p", { className: "rounded-2xl bg-[#FBF8F3] p-4 text-sm leading-7 text-stone-700", children: t.productNote }), /*#__PURE__*/
+                                                      _jsxs("div", { className: "mt-5 overflow-hidden rounded-2xl border border-[#D8C7B3] bg-white shadow-sm", children: [/*#__PURE__*/
+                                                                                _jsxs("div", { className: "border-b border-[#E8DDD1] bg-[#F4EEE5] px-5 py-4", children: [/*#__PURE__*/
+                                                                                                          _jsxs("div", { className: "text-base font-semibold text-stone-900", children: ["Product information / ", localizedProduct.name] }), /*#__PURE__*/
+                                                                                                  _jsx("p", { className: "mt-1 text-xs leading-5 text-stone-600", children: "Check photos, video, size, condition, and pickup details before contacting us." })] }
                                                                                                ), /*#__PURE__*/
                                                                         _jsxs("div", { className: "divide-y divide-[#E8DDD1] text-sm", children: [/*#__PURE__*/
-                                                                                                  _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Photos" }), /*#__PURE__*/_jsx("div", { className: "text-stone-600", children: selected.photos })] }), /*#__PURE__*/
-                                                                                          _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Video" }), /*#__PURE__*/_jsx("div", { className: "text-stone-600", children: selected.video })] }), /*#__PURE__*/
-                                                                                          _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Size" }), /*#__PURE__*/_jsx("div", { className: "text-stone-600", children: selected.size })] }), /*#__PURE__*/
-                                                                                          _jsxs("div", { className: "grid grid-cols-[88px_1fr] gap-3 px-4 py-3", children: [/*#__PURE__*/_jsx("div", { className: "font-semibold text-stone-800", children: "Condition" }), /*#__PURE__*/_jsxs("div", { className: "text-stone-600", children: [localizedProduct.status, " / ", selected.condition] })] })] }
+                                                                                                  _jsxs("div", { className: "grid grid-cols-[112px_1fr] gap-3 px-5 py-3.5", children: [/*#__PURE__*/_jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-stone-400", children: "Item ID" }), /*#__PURE__*/_jsx("div", { className: "font-medium text-stone-700", children: selected.id })] }), /*#__PURE__*/_jsxs("div", { className: "grid grid-cols-[112px_1fr] gap-3 px-5 py-3.5", children: [/*#__PURE__*/_jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-stone-400", children: "Photos" }), /*#__PURE__*/_jsx("div", { className: "text-stone-700", children: selected.photos })] }), /*#__PURE__*/
+                                                                                          _jsxs("div", { className: "grid grid-cols-[112px_1fr] gap-3 px-5 py-3.5", children: [/*#__PURE__*/_jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-stone-400", children: "Video" }), /*#__PURE__*/_jsx("div", { className: "text-stone-700", children: selected.video })] }), /*#__PURE__*/
+                                                                                          _jsxs("div", { className: "grid grid-cols-[112px_1fr] gap-3 px-5 py-3.5", children: [/*#__PURE__*/_jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-stone-400", children: "Size" }), /*#__PURE__*/_jsx("div", { className: "text-stone-700", children: selected.size })] }), /*#__PURE__*/
+                                                                                          _jsxs("div", { className: "grid grid-cols-[112px_1fr] gap-3 px-5 py-3.5", children: [/*#__PURE__*/_jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-stone-400", children: "Condition" }), /*#__PURE__*/_jsxs("div", { className: "text-stone-700", children: [localizedProduct.status, " / ", selected.condition] })] }), /*#__PURE__*/_jsxs("div", { className: "grid grid-cols-[112px_1fr] gap-3 px-5 py-3.5", children: [/*#__PURE__*/_jsx("div", { className: "text-xs font-semibold uppercase tracking-[0.14em] text-stone-400", children: "Pickup" }), /*#__PURE__*/_jsxs("div", { className: "text-stone-700", children: [t.delivery, " / ", t.deliveryEn] })] })] }
                                                                                         )] }
                                                                       ), /*#__PURE__*/
                                                       _jsxs("div", { className: "mt-5 flex flex-wrap gap-2 text-xs", children: [/*#__PURE__*/
@@ -872,7 +872,7 @@ function FeaturedProduct({ selected, language, t }) {
                                                                         href: LINE_URL,
                                                                         target: "_blank",
                                                                         rel: "noreferrer",
-                                                                        className: "mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-[#4E9D5C] px-5 py-4 text-sm font-medium text-white transition hover:bg-[#438B50]", children: [/*#__PURE__*/
+                                                                        className: "mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-[#4E9D5C] px-6 py-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[#438B50]", children: [/*#__PURE__*/
 
                                                                         _jsx(MessageCircle, { size: 18 }), " ", t.askLine] }
                                                                       )] }
