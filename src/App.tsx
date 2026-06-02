@@ -638,8 +638,8 @@ function Hero({
                                     _jsx("img", { src: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85", alt: "Warm living room with reused furniture", className: "absolute inset-0 h-full w-full object-cover object-center" }), /*#__PURE__*/
                                     _jsx("div", { className: "absolute inset-0 bg-[#172017]/45" }), /*#__PURE__*/
                                     _jsx("div", { className: "absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#162016]/95 via-[#273225]/72 to-transparent" }), /*#__PURE__*/
-                                    _jsxs("div", { className: "relative z-10 flex min-h-[560px] flex-col justify-between p-6 text-white sm:p-8 md:min-h-[620px] md:p-12 lg:p-14", children: [/*#__PURE__*/
-                                                          _jsxs("div", { className: "relative z-30 w-fit", "aria-label": "Language support", children: [/*#__PURE__*/
+                                    _jsxs("div", { className: "relative z-10 flex min-h-[470px] flex-col justify-center p-6 pt-20 text-white sm:min-h-[500px] sm:p-8 sm:pt-24 md:min-h-[540px] md:p-12 md:pt-28 lg:min-h-[560px] lg:p-14 lg:pt-28", children: [/*#__PURE__*/
+                                                          _jsxs("div", { className: "absolute left-6 top-6 z-30 w-fit sm:left-8 sm:top-8 md:left-12 md:top-12 lg:left-14 lg:top-14", "aria-label": "Language support", children: [/*#__PURE__*/
                                                                                   _jsxs("button", {
                                                                                                     type: "button",
                                                                                                     "aria-label": "Choose language",
@@ -672,7 +672,7 @@ function Hero({
                                                                                          ) :
                                                                           null] }
                                                                         ), /*#__PURE__*/
-                                                  _jsxs("div", { className: "max-w-2xl py-14 sm:py-20", children: [/*#__PURE__*/
+                                                  _jsxs("div", { className: "max-w-2xl py-8 sm:py-10", children: [/*#__PURE__*/
                                                                         _jsx("div", { className: "mb-5 inline-flex rounded-full border border-white/25 bg-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#F4D7B4] backdrop-blur", children: "KiMEGURi Reuse Market" }), /*#__PURE__*/
                                                                         _jsx("h1", { className: "text-4xl font-semibold leading-[1.12] tracking-[0.03em] text-white md:text-6xl", children:
                                                                                         t.heroTitle }
