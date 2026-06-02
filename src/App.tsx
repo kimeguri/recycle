@@ -635,7 +635,7 @@ function Hero({
 
   return (/*#__PURE__*/
             _jsxs("section", { id: "top", className: "relative isolate scroll-mt-40 overflow-hidden rounded-[2rem] border border-[#D9C7B6] bg-stone-950 shadow-[0_28px_80px_rgba(78,58,40,0.22)]", children: [/*#__PURE__*/
-                                    _jsx("img", { src: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1800&q=85", alt: "Warm living room with reused furniture", className: "absolute inset-0 h-full w-full object-cover object-center" }), /*#__PURE__*/
+                                    _jsx("img", { src: "https://images.unsplash.com/photo-1762529716272-b316f61502e7?auto=format&fit=crop&w=1800&q=85", alt: "Warm living room with reused furniture", className: "absolute inset-0 h-full w-full object-cover object-center" }), /*#__PURE__*/
                                     _jsx("div", { className: "absolute inset-0 bg-[#172017]/45" }), /*#__PURE__*/
                                     _jsx("div", { className: "absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#162016]/95 via-[#273225]/72 to-transparent" }), /*#__PURE__*/
                                     _jsxs("div", { className: "relative z-10 flex min-h-[430px] flex-col justify-center p-6 pt-20 text-white sm:min-h-[460px] sm:p-8 sm:pt-20 md:min-h-[500px] md:p-10 md:pt-24 lg:min-h-[520px] lg:p-12 lg:pt-24", children: [/*#__PURE__*/
